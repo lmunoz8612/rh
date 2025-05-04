@@ -1,0 +1,140 @@
+.App {
+    text-align: center;
+}
+
+.Auth {
+    display: inline-flex;
+    width: 100%;
+}
+
+/* margins */
+.m-1 {
+    margin: calc(var(--base-size) * 1) !important;
+}
+
+.m-2 {
+    margin: calc(var(--base-size) * 2) !important;
+}
+
+.m-3 {
+    margin: calc(var(--base-size) * 3) !important;
+}
+
+.m-4 {
+    margin: calc(var(--base-size) * 4) !important;
+}
+
+.mr-1 {
+    margin-right: calc(var(--base-size) * 1) !important;
+}
+
+.mr-2 {
+    margin-right: calc(var(--base-size) * 2) !important;
+}
+
+.mr-3 {
+    margin-right: calc(var(--base-size) * 3) !important;
+}
+
+.mr-4 {
+    margin-right: calc(var(--base-size) * 4) !important;
+}
+
+.ml-1 {
+    margin-left: calc(var(--base-size) * 1) !important;
+}
+
+.ml-2 {
+    margin-left: calc(var(--base-size) * 2) !important;
+}
+
+.ml-3 {
+    margin-left: calc(var(--base-size) * 3) !important;
+}
+
+.ml-4 {
+    margin-left: calc(var(--base-size) * 4) !important;
+}
+
+.mt-1 {
+    margin-top: calc(var(--base-size) * 1) !important;
+}
+
+.mt-2 {
+    margin-top: calc(var(--base-size) * 2) !important;
+}
+
+.mt-3 {
+    margin-top: calc(var(--base-size) * 3) !important;
+}
+
+.mt-4 {
+    margin-top: calc(var(--base-size) * 4) !important;
+}
+
+.mb-1 {
+    margin-bottom: calc(var(--base-size) * 1) !important;
+}
+
+.mb-2 {
+    margin-bottom: calc(var(--base-size) * 2) !important;
+}
+
+.mb-3 {
+    margin-bottom: calc(var(--base-size) * 3) !important;
+}
+
+.mb-4 {
+    margin-bottom: calc(var(--base-size) * 4) !important;
+}
+
+/* paddings */
+.pd-1 {
+    padding: calc(var(--base-size) * 1) !important;
+}
+
+.pd-2 {
+    padding: calc(var(--base-size) * 2) !important;
+}
+
+.pd-3 {
+    padding: calc(var(--base-size) * 3) !important;
+}
+
+.pd-4 {
+    padding: calc(var(--base-size) * 4) !important;
+}
+
+.pdl-1 {
+    padding-left: calc(var(--base-size) * 1) !important;
+}
+
+.pdl-2 {
+    padding-left: calc(var(--base-size) * 2) !important;
+}
+
+.pdl-3 {
+    padding-left: calc(var(--base-size) * 3) !important;
+}
+
+.pdl-4 {
+    padding-left: calc(var(--base-size) * 4) !important;
+}
+
+.pdr-1 {
+    padding-right: calc(var(--base-size) * 1) !important;
+}
+
+.pdr-2 {
+    padding-right: calc(var(--base-size) * 2) !important;
+}
+
+.pdr-3 {
+    padding-right: calc(var(--base-size) * 3) !important;
+}
+
+.pdr-4 {
+    padding-right: calc(var(--base-size) * 4) !important;
+}
+
+/* Agregar... */
