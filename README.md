@@ -1,2 +1,2 @@
-# VxHR
-VxHR Digital Plataform
+# RH
+RH Digital Plataform
