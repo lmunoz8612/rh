@@ -103,7 +103,7 @@ const Directory = () => {
                                 <TableBody>
                                     {filteredUsers[page - 1] && filteredUsers[page - 1].map((row) => (
                                         <TableRow key={row.pk_user_id}>
-                                            <TableCell align="center"><Avatar src={row.profile_picture} sx={{ bgcolor: row.bgcolor }}></Avatar></TableCell>
+                                            <TableCell align="center"><Avatar src={row.file ? `data:image/${row.file_extension};base64,${row.file}` : ''} sx={{ bgcolor: row.bgcolor }}></Avatar></TableCell>
                                             <TableCell align="center"><Typography variant="body2" fontWeight="bold" color="primary">{row.full_name}</Typography></TableCell>
                                             <TableCell align="center"><Typography variant="body2" fontWeight="bold" color="primary">{row.job_position}</Typography></TableCell>
                                             <TableCell align="center"><Typography variant="body2" fontWeight="bold" color="primary">{row.job_position_area}</Typography></TableCell>

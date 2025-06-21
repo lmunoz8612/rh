@@ -314,7 +314,7 @@ const Home = () => {
                             ))}
                     </Box>
                     <Stack direction="row" alignItems="center">
-                        <Avatar src={user.profile_picture} />
+                        <Avatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
                         <textarea className="ml-2" defaultValue={birthdayDialogProps.new_comment} placeholder="Escribe algo para comentar..." onChange={(e) => {
                             setBirthdayDialogProps(prevState => ({ ...prevState, new_comment: e.target.value, }));
                         }} style={{

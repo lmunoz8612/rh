@@ -107,7 +107,7 @@ const Profile = () => {
                             <Typography variant="body1" fontWeight="bold" color="primary" sx={{ mb: 1, }}>Cuenta</Typography>
                         </Grid>}
                     <Grid size={isMediumScreen ? 12 : 2} textAlign="center">
-                        <StyledAvatar src={user.profile_picture} />
+                        <StyledAvatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
                         {/*
                         <Box textAlign={isMediumScreen ? 'center' : 'right'}>
                             <IconButton sx={{ padding: 0.3, }}><StylizedIcon className="ri-image-edit-line" /></IconButton>

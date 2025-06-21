@@ -155,7 +155,7 @@ const Organization = () => {
                                         <StylizedCard variant="outlined" level={1} available={'true'}>
                                             <StylizedTreeNodeContainer>
                                                 <StylizedCardAvatarContainer>
-                                                    <StylizedCardAvatar src={`data:image/${data.file_extension};base64,${data.file}`} />
+                                                    <StylizedCardAvatar src={data.file ? `data:image/${data.file_extension};base64,${data.file}` : ''} />
                                                 </StylizedCardAvatarContainer>
                                                 <StylizedCardTextContainer>
                                                     <Typography variant="body2" color="white" fontWeight="bold" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" ml={2} title={data.name.trim() || '~Sin asignar'}>{data.name || '~Sin asignar'}</Typography>

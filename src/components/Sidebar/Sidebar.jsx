@@ -68,7 +68,7 @@ const Sidebar = () => {
                             cursor: "pointer"
                         }}
                         onClick={handleAvatarClick}>
-                        <Avatar src={user?.profile_picture || ''} />
+                        <Avatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
                         {(user?.first_name && user?.last_name_1 && user?.last_name_2) ?
                             <Typography variant="body1" fontWeight="bold" color="white">{`${user?.first_name} ${user?.last_name_1} ${user?.last_name_2}`}</Typography>
                             :
