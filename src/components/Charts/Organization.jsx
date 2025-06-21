@@ -76,7 +76,7 @@ const Node = ({ data, level, }) => {
                                 <StylizedCard variant="outlined" level={level} available={child.name.trim() ? 'true' : 'false'}>
                                     <StylizedTreeNodeContainer>
                                         <StylizedCardAvatarContainer>
-                                            <StylizedCardAvatar src={child.profile_picture} />
+                                            <StylizedCardAvatar src={`data:image/${child.file_extension};base64,${child.file}`} />
                                         </StylizedCardAvatarContainer>
                                         <StylizedCardTextContainer>
                                             <Typography variant="body2" color="white" fontWeight="bold" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" ml={2} title={child.name.trim() || '~Sin asignar'}>{child.name.trim() || '~Sin asignar'}</Typography>
@@ -155,7 +155,7 @@ const Organization = () => {
                                         <StylizedCard variant="outlined" level={1} available={'true'}>
                                             <StylizedTreeNodeContainer>
                                                 <StylizedCardAvatarContainer>
-                                                    <StylizedCardAvatar src={data.profile_picture} />
+                                                    <StylizedCardAvatar src={`data:image/${data.file_extension};base64,${data.file}`} />
                                                 </StylizedCardAvatarContainer>
                                                 <StylizedCardTextContainer>
                                                     <Typography variant="body2" color="white" fontWeight="bold" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" ml={2} title={data.name.trim() || '~Sin asignar'}>{data.name || '~Sin asignar'}</Typography>
