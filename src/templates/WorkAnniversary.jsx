@@ -7,7 +7,7 @@ import {
     Typography,
     useTheme
 } from '@mui/material';
-import VittiLogisticLogo from '../assets/imgs/vitti-logistics-logo.png';
+import logo from '../assets/imgs/logo.jpg';
 
 const WorkAnniversary = ({ title, usersData, isMediumScreen, ...rest }) => {
     const theme = useTheme();
@@ -27,7 +27,7 @@ const WorkAnniversary = ({ title, usersData, isMediumScreen, ...rest }) => {
                     ...rest
                 }}>
                 <h1 style={{ color: theme.palette.common.white, fontSize: isMediumScreen ? theme.typography.fontSize : theme.typography.fontSize * 3, fontWeight: 'bold' }}>
-                    ¡Feliz Aniversario Laboral en Vitti Logistics!
+                    ¡Feliz Aniversario Laboral en RH!
                 </h1>
                 <Box
                     sx={{
@@ -68,8 +68,8 @@ const WorkAnniversary = ({ title, usersData, isMediumScreen, ...rest }) => {
                     </Typography>
                     <Typography variant={isMediumScreen ? 'body2' : 'h5'} color="primary" fontWeight="bold" mt={2}>Atentamente.</Typography>
                     <img
-                        src={VittiLogisticLogo}
-                        alt="Vitti Logistic"
+                        src={logo}
+                        alt="RH"
                         style={{ marginTop: theme.shape.margin * 2, width: isMediumScreen ? '100%' : '50%', }}
                     />
                 </Box>

@@ -6,7 +6,7 @@ import {
     Typography,
     useTheme
 } from '@mui/material';
-import VittiLogisticLogo from '../assets/imgs/vitti-logistics-logo.png';
+import logo from '../assets/imgs/logo.jpg';
 
 const HappyBirthday = ({ keyIndex, userData, isMediumScreen, ...rest }) => {
     const theme = useTheme();
@@ -25,7 +25,7 @@ const HappyBirthday = ({ keyIndex, userData, isMediumScreen, ...rest }) => {
                 ...rest
             }}>
             <h1 style={{ color: theme.palette.common.white, fontSize: isMediumScreen ? theme.typography.fontSize : theme.typography.fontSize * 3, fontWeight: 'bold' }}>
-                🎉¡Vitti Logistics te desea Feliz Cumpleaños!🎂
+                🎉¡RH te desea Feliz Cumpleaños!🎂
             </h1>
             <Box
                 sx={{
@@ -56,8 +56,8 @@ const HappyBirthday = ({ keyIndex, userData, isMediumScreen, ...rest }) => {
                 </Typography>
                 <Typography variant={isMediumScreen ? 'body2' : 'h5'} color="primary" fontWeight="bold" mt={2}>Atentamente.</Typography>
                 <img
-                    src={VittiLogisticLogo}
-                    alt="Vitti Logistic"
+                    src={logo}
+                    alt="RH"
                     style={{ marginTop: theme.shape.margin * 2, width: isMediumScreen ? '100%' : '50%', }}
                 />
             </Box>

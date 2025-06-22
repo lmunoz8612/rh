@@ -17,7 +17,7 @@ import HorizontalTabs from '../../components/Tabs/Horizontal';
 import VerticalTabs from '../../components/Tabs/Vertical';
 import WereCaughtUp from '../../components/Placeholders/WereCaughtUp';
 import { ROLES } from '../../assets/constants/constants';
-import vittiLogoV from '../../assets/imgs/logoV.png';
+import RHIcon from '../../assets/imgs/RH.ico';
 import api from '../../api/api';
 
 const StylizedLabelContainer = styled('div')(({ theme }) => ({
@@ -111,7 +111,7 @@ const Communication = () => {
                             <VerticalTabs
                                 tabLabels={data.map(row => (
                                     <StylizedLabelContainer>
-                                        <img src={vittiLogoV} alt="Vitti Logistic" style={{ width: '30px' }} />
+                                        <img src={RHIcon} alt="RH" style={{ width: '30px' }} />
                                         <Typography variant="body2" color="primary" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" textAlign="left">{row.title}</Typography>
                                     </StylizedLabelContainer>
                                 ))}

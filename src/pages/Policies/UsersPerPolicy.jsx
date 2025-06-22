@@ -29,7 +29,7 @@ import {
 import GridLayout from '../../components/GridLayout/GridLayout';
 import MenuMoreVert from '../../components/Menu/MoreVert';
 import { $, formatDate, padWithZeros } from '../../assets/utils/utils';
-import vittiLogisticLog from '../../assets/imgs/vitti-logistics-logo.png';
+import logo from '../../assets/imgs/logo.jpg';
 import api from '../../api/api';
 
 const StylizedChip = styled(Chip)(({ theme }) => ({
@@ -228,7 +228,7 @@ const UsersPerPolicy = () => {
                 }
             }}>
                 <DialogTitle variant="h6" fontWeight="bold" color="primary">
-                    <img src={vittiLogisticLog} alt="" width="100%" />
+                    <img src={logo} alt="" width="100%" />
                     <Typography variant="body1" color="primary" fontWeight="bold">
                         {dialogProps?.data?.policy.toUpperCase()}
                         <i id="print-icon" className="ri-printer-line" style={{ cursor: 'pointer', float: 'right' }} onClick={() => handleGeneratePDF(dialogProps?.data?.policy.toUpperCase())} title="Generar PDF"></i>
