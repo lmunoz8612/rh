@@ -53,9 +53,9 @@ const Sidebar = () => {
                 onClose={handleSidebarToggle}
                 variant={isSmallScreen ? 'temporary' : 'permanent'}
                 sx={{ width: drawerWidth, }}>
-                <Box sx={{ backgroundColor: theme.palette.common.white, }} className="pd-2">
+                <Box sx={{ backgroundColor: theme.palette.common.white, }}>
                     <Link to="/home">
-                        <img src={logo} alt="logo" width={'50%'} title='VICA' />
+                        <img src={logo} alt="logo" width={'50%'} title='RH' />
                     </Link>
                 </Box>
                 <Box className="pd-2" overflow="auto" textAlign="left">
