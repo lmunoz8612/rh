@@ -114,7 +114,7 @@ Node.propTypes = {
 
 const Organization = () => {
     const [data, setData] = React.useState({});
-    const [expanded, setExpanded] = React.useState(false);
+    const [expanded, setExpanded] = React.useState(true);
     const [loading, setLoading] = React.useState(true);
     const toggleExpand = () => setExpanded(prev => !prev);
 
