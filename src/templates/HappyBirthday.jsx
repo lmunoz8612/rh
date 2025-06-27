@@ -40,7 +40,7 @@ const HappyBirthday = ({ keyIndex, userData, isMediumScreen, ...rest }) => {
                 }}>
                 <Box p={1}>
                     <Stack direction="column" alignItems="center" mb={2}>
-                        <Avatar src={userData.file} sx={{ height: isMediumScreen ? '70px' : '100px', width: isMediumScreen ? '70px' : '100px', ml: 1, }} />
+                        <Avatar src={userData.file ? `data:image/${userData.file_extension};base64,${userData.file}` : ''} sx={{ height: isMediumScreen ? '70px' : '100px', width: isMediumScreen ? '70px' : '100px', ml: 1, }} />
                         <Typography variant="body1" color="primary" fontWeight="bold" className="ml-1">
                             {userData.user_full_name}
                         </Typography>

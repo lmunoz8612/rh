@@ -254,7 +254,7 @@ const Home = () => {
                                         <Link to="/comunicacion-interna?tab=Novedades">
                                             <Card variant="outlined" sx={{ display: 'flex', }}>
                                                 <CardMedia title={1} sx={{ alignItems: 'center', display: 'flex', }}>
-                                                    <Avatar src={post.file} title={post.user_full_name} sx={{ ml: 1 }} />
+                                                    <Avatar src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : ''} title={post.user_full_name} sx={{ ml: 1 }} />
                                                 </CardMedia>
                                                 <CardContent>
                                                     <Typography variant="body2" color="primary" fontWeight="bold">Aniversario {post.years_worked} {post.years_worked > 1 ? 'años' : 'año'}</Typography>
@@ -282,7 +282,7 @@ const Home = () => {
                             dashboard.birthdays.map(post => (
                                 <Grid key={post.pk_birthday_id} size={12}>
                                     <Stack direction="row" alignItems="center">
-                                        <Avatar src={post.file} title={post.user_full_name} sx={{ ml: 1 }} />
+                                        <Avatar src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : ''} title={post.user_full_name} sx={{ ml: 1 }} />
                                         <Typography variant="body2" color="primary" className="ml-1">
                                             {post.user_full_name}
                                             <br />
