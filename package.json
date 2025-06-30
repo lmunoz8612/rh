@@ -2,6 +2,7 @@
     "name": "vxhr",
     "version": "0.1.0",
     "private": true,
+    "proxy": "https://54.183.233.131",
     "dependencies": {
         "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@emotion/react": "^11.14.0",
