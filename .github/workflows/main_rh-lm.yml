@@ -60,9 +60,10 @@ jobs:
         with:
           app-name: 'rh-lm'
           slot-name: 'Production'
-          package: build
+          package: .
 
           
+
 
 
 
