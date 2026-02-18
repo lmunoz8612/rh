@@ -55,7 +55,7 @@ const Sidebar = () => {
                 sx={{ width: drawerWidth, }}>
                 <Box sx={{ backgroundColor: theme.palette.common.white, }}>
                     <Link to="/home">
-                        <img src={logo} alt="logo" width={'50%'} title='RH' />
+                        <img src={logo} alt="logo" width={'100%'} height={'100%'} title='RH' />
                     </Link>
                 </Box>
                 <Box className="pd-2" overflow="auto" textAlign="left">
