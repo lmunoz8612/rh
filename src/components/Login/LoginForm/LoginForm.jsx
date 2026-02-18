@@ -29,8 +29,9 @@ const classes = {
         padding: 3,
     },
     logo: {
+        borderRadius: '8px 8px 0 0',
         marginBottom: 32,
-        width: '50%',
+        width: '100%',
     },
     form: {
         textAlign: 'left',
