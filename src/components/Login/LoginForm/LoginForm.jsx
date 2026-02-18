@@ -29,7 +29,7 @@ const classes = {
         padding: 3,
     },
     logo: {
-        borderRadius: '8px 8px 0 0',
+        borderRadius: '8px 8px 0px 0px',
         marginBottom: 32,
         width: '100%',
     },
