@@ -273,33 +273,35 @@ const Home = () => {
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
-                    <Typography variant="body1" fontWeight="bold" color="primary">
-                        <StylizedLink to="/comunicacion-interna?tab=Cumpleaños" title="Clic para ver los cumpleaños de la semana">Cumpleaños<StylizedIcon className="ri-cake-2-line ml-1"></StylizedIcon></StylizedLink>
-                    </Typography>
-                    <hr />
-                    <Grid container spacing={2} direction="row">
-                        {dashboard.birthdays && dashboard.birthdays.length > 0 ?
-                            dashboard.birthdays.map(post => (
-                                <Grid key={post.pk_birthday_id} size={12}>
-                                    <Stack direction="row" alignItems="center">
-                                        <Avatar src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : ''} title={post.user_full_name} sx={{ ml: 1 }} />
-                                        <Typography variant="body2" color="primary" className="ml-1">
-                                            {post.user_full_name}
-                                            <br />
-                                            <b className="mr-1">{post.count_reactions}</b>
-                                            <i id={`like_${post.pk_birthday_id}`} className="ri-thumb-up-line mr-1" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} title="Me gusta" onClick={() => handleReaction(post.pk_birthday_id, 'like')}></i>
-                                            <i id={`love_${post.pk_birthday_id}`} className="ri-heart-line mr-1" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} title="Me encanta" onClick={() => handleReaction(post.pk_birthday_id, 'love')}></i>
-                                            <i className="ri-chat-1-line" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} onClick={() => {
-                                                setBirthdayDialogProps(prevState => ({ ...prevState, pk_birthday_id: post.pk_birthday_id, all_comments: post.comments }));
-                                                handleOpen();
-                                            }} title="Comentar"></i>
-                                        </Typography>
-                                    </Stack>
-                                </Grid>
-                            ))
-                            :
-                            <CardMedia component="img" src={notContent} />}
+                    <Grid container spacing={1} direction="column">
+                        <Grid size={12}>
+                            <Typography variant="body1" fontWeight="bold" color="primary">
+                                <StylizedLink to="/comunicacion-interna?tab=Cumpleaños" title="Clic para ver los cumpleaños de la semana">Cumpleaños<StylizedIcon className="ri-cake-2-line ml-1"></StylizedIcon></StylizedLink>
+                            </Typography>
+                            <hr />
+                        </Grid>
                     </Grid>
+                    {dashboard.birthdays && dashboard.birthdays.length > 0 ?
+                        dashboard.birthdays.map(post => (
+                            <Grid key={post.pk_birthday_id} size={12}>
+                                <Stack direction="row" alignItems="center">
+                                    <Avatar src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : ''} title={post.user_full_name} sx={{ ml: 1 }} />
+                                    <Typography variant="body2" color="primary" className="ml-1">
+                                        {post.user_full_name}
+                                        <br />
+                                        <b className="mr-1">{post.count_reactions}</b>
+                                        <i id={`like_${post.pk_birthday_id}`} className="ri-thumb-up-line mr-1" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} title="Me gusta" onClick={() => handleReaction(post.pk_birthday_id, 'like')}></i>
+                                        <i id={`love_${post.pk_birthday_id}`} className="ri-heart-line mr-1" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} title="Me encanta" onClick={() => handleReaction(post.pk_birthday_id, 'love')}></i>
+                                        <i className="ri-chat-1-line" style={{ cursor: 'pointer', color: REACTIONS_COLORS['default'], }} onClick={() => {
+                                            setBirthdayDialogProps(prevState => ({ ...prevState, pk_birthday_id: post.pk_birthday_id, all_comments: post.comments }));
+                                            handleOpen();
+                                        }} title="Comentar"></i>
+                                    </Typography>
+                                </Stack>
+                            </Grid>
+                        ))
+                        :
+                        <CardMedia component="img" src={notContent} />}
                 </Grid>
             </Grid>
             <Dialog open={open} onClose={handleClose} slotProps={{ paper: { sx: { width: '40%', } } }}>
