@@ -4,6 +4,7 @@ import { useAuth } from '../../context/Auth/Auth';
 import GridLayout from '../../components/GridLayout/GridLayout';
 import {
     Backdrop,
+    CardMedia,
     CircularProgress,
     Grid2 as Grid,
     styled,
@@ -15,9 +16,9 @@ import WorkAnniversary from '../../templates/WorkAnniversary';
 import HappyBirthday from '../../templates/HappyBirthday';
 import HorizontalTabs from '../../components/Tabs/Horizontal';
 import VerticalTabs from '../../components/Tabs/Vertical';
-import WereCaughtUp from '../../components/Placeholders/WereCaughtUp';
 import { ROLES } from '../../assets/constants/constants';
 import RHIcon from '../../assets/imgs/RH.ico';
+import notContent from '../../assets/imgs/placeholders/notContent.png';
 import api from '../../api/api';
 
 const StylizedLabelContainer = styled('div')(({ theme }) => ({
@@ -170,11 +171,11 @@ const Communication = () => {
                         COMUNICACIÓN INTERNA
                     </Typography>
                     <HorizontalTabs tabLabels={tabLabels} tabValues={[
-                        dashboard.posts && dashboard.posts.length > 0 ? renderTabContent('posts', dashboard.posts, (postId - 1)) : <WereCaughtUp />,
-                        dashboard.events && dashboard.events.length > 0 ? renderTabContent('events', dashboard.events, (postId - 1)) : <WereCaughtUp />,
-                        dashboard.c4 && dashboard.c4.length > 0 ? renderTabContent('c4', dashboard.c4, (postId - 1)) : <WereCaughtUp />,
-                        dashboard.news && dashboard.news.length > 0 ? renderTabContent('news', dashboard.news) : <WereCaughtUp />,
-                        dashboard.birthdays && dashboard.birthdays.length > 0 ? renderTabContent('birthdays', dashboard.birthdays) : <WereCaughtUp />,
+                        dashboard.posts && dashboard.posts.length > 0 ? renderTabContent('posts', dashboard.posts, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                        dashboard.events && dashboard.events.length > 0 ? renderTabContent('events', dashboard.events, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                        dashboard.c4 && dashboard.c4.length > 0 ? renderTabContent('c4', dashboard.c4, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                        dashboard.news && dashboard.news.length > 0 ? renderTabContent('news', dashboard.news) : <CardMedia component="img" src={notContent} />,
+                        dashboard.birthdays && dashboard.birthdays.length > 0 ? renderTabContent('birthdays', dashboard.birthdays) : <CardMedia component="img" src={notContent} />,
                     ]} defaultValue={tab ? tabLabels.indexOf(tab) : 0} />
                 </Grid>
             </GridLayout>

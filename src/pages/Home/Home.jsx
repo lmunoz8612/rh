@@ -22,7 +22,7 @@ import {
 } from '@mui/material';
 import Weather from '../../components/Weather/Weather';
 import notImage from '../../assets/imgs/placeholders/notImage.jpg';
-import WereCaughtUp from '../../components/Placeholders/WereCaughtUp';
+import notContent from '../../assets/imgs/placeholders/notContent.png';
 import { $ } from '../../assets/utils/utils';
 import api from '../../api/api';
 import { Link } from 'react-router';
@@ -184,7 +184,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <WereCaughtUp mt={0} />}
+                            <CardMedia component="img" src={notContent} />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -210,7 +210,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <WereCaughtUp mt={0} />}
+                            <CardMedia component="img" src={notContent} />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -236,7 +236,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <WereCaughtUp mt={0} />}
+                            <CardMedia component="img" src={notContent} />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -269,7 +269,7 @@ const Home = () => {
                                 <Typography variant="body2" color="primary" textAlign="right"><Link to="/comunicacion-interna?tab=Novedades">Ver más...</Link></Typography>
                             </>
                             :
-                            <WereCaughtUp mt={0} />}
+                            <CardMedia component="img" src={notContent} />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -298,7 +298,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <WereCaughtUp mt={1} />}
+                            <CardMedia component="img" src={notContent} />}
                     </Grid>
                 </Grid>
             </Grid>
