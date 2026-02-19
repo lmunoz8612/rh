@@ -132,7 +132,7 @@ const Communication = () => {
                                 <StylizedContentContainer key={row.title + '_' + index} className="mt-2">
                                     <Typography component="div" variant="body1" color="primary" fontWeight="bold">{row.title}</Typography>
                                     <hr />
-                                    <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxWidth: '100%', }} />
+                                    {row.file && <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxWidth: '100%', }} />}
                                     <Typography component="div" variant="body2" color="primary" dangerouslySetInnerHTML={{ __html: row.content }} />
                                 </StylizedContentContainer>
                             ))
