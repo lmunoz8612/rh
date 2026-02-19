@@ -164,9 +164,10 @@ const Organization = () => {
                                                 </StylizedCardTextContainer>
                                             </StylizedTreeNodeContainer>
                                         </StylizedCard>
-                                        <IconButton onClick={toggleExpand}>
-                                            {expanded ? <ExpandLess /> : <ExpandMore />}
-                                        </IconButton>
+                                        {data.children.length > 0 &&
+                                            <IconButton onClick={toggleExpand}>
+                                                {expanded ? <ExpandLess /> : <ExpandMore />}
+                                            </IconButton>}
                                     </>
                                 }>
                                 {expanded && data.children.length > 0 && <Node data={data.children} level={2} />}
