@@ -169,7 +169,7 @@ const Organization = () => {
                                         </IconButton>
                                     </>
                                 }>
-                                {expanded && <Node data={data.children} level={2} />}
+                                {expanded && data.children.length > 0 && <Node data={data.children} level={2} />}
                             </Tree>
                         </StylizedTreeContainer>
                     </ZoomableContainer>
