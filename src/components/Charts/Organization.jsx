@@ -148,7 +148,7 @@ const Organization = () => {
                         <StylizedTreeContainer>
                             <Tree
                                 lineWidth={expanded ? '0px' : '0px'}
-                                
+                                lineColor={theme.palette.secondary.light}
                                 lineBorderRadius={0}
                                 label={
                                     <>
