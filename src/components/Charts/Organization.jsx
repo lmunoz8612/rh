@@ -147,7 +147,7 @@ const Organization = () => {
                     <ZoomableContainer isLargeUpScreen={isLgUp} theme={theme}>
                         <StylizedTreeContainer>
                             <Tree
-                                lineWidth={expanded ? '0px' : '0px'}
+                                lineWidth={expanded ? (data.children.length > 0 ? '1px' : '0px') : '0px'}
                                 lineColor={theme.palette.secondary.light}
                                 lineBorderRadius={0}
                                 label={
