@@ -118,7 +118,7 @@ const Communication = () => {
                                 ))}
                                 tabValues={data.map(row => (
                                     <StylizedContentContainer>
-                                        <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxHeight: '40vh', maxWidth: '100%', }} />
+                                        {row.file && <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxHeight: '40vh', maxWidth: '100%', }} />}
                                         <Typography component="div" variant="body1" color="primary" fontWeight="bold">{row.title}</Typography>
                                         <hr />
                                         <Typography component="div" variant="body2" color="primary" dangerouslySetInnerHTML={{ __html: row.content }} />
