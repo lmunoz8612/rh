@@ -173,9 +173,9 @@ const Home = () => {
                             dashboard.posts.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Comunicados&id=${i + 1}`}>
-                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
-                                            <CardContent sx={{ width: '65%', }}>
+                                        <Card variant="outlined">
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
+                                            <CardContent>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver comunicado...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
@@ -199,9 +199,9 @@ const Home = () => {
                             dashboard.events.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Eventos&id=${i + 1}`}>
-                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
-                                            <CardContent sx={{ width: '65%', }}>
+                                        <Card variant="outlined">
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
+                                            <CardContent>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver evento...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
@@ -225,9 +225,9 @@ const Home = () => {
                             dashboard.c4.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Espacio C4&id=${i + 1}`}>
-                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
-                                            <CardContent sx={{ width: '65%', }}>
+                                        <Card variant="outlined">
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
+                                            <CardContent>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver publicación...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
