@@ -22,7 +22,7 @@ import {
 } from '@mui/material';
 import Weather from '../../components/Weather/Weather';
 import notImage from '../../assets/imgs/placeholders/notImage.jpg';
-import notContent from '../../assets/imgs/placeholders/notContent.png';
+import WereCaughtUp from '../../components/Placeholders/WereCaughtUp';
 import { $ } from '../../assets/utils/utils';
 import api from '../../api/api';
 import { Link } from 'react-router';
@@ -154,7 +154,7 @@ const Home = () => {
     if (loading) return (<Backdrop open={loading} invisible><CircularProgress /></Backdrop>);
 
     return (
-        <Paper sx={{ p: 2, }} style={{ height: '100%' }}>
+        <Paper sx={{ p: 2, }}>
             <Grid container spacing={3}>
                 <Grid size={12} display="flex">
                     <Typography variant="h6" color="primary" width="80%">¡<b>Bienvenido,</b> {user.full_name}!</Typography>
@@ -173,9 +173,9 @@ const Home = () => {
                             dashboard.posts.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Comunicados&id=${i + 1}`}>
-                                        <Card variant="outlined">
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
-                                            <CardContent>
+                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
+                                            <CardContent sx={{ width: '65%', }}>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver comunicado...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
@@ -184,7 +184,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <CardMedia component="img" src={notContent} />}
+                            <WereCaughtUp />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -199,9 +199,9 @@ const Home = () => {
                             dashboard.events.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Eventos&id=${i + 1}`}>
-                                        <Card variant="outlined">
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
-                                            <CardContent>
+                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
+                                            <CardContent sx={{ width: '65%', }}>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver evento...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
@@ -210,7 +210,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <CardMedia component="img" src={notContent} />}
+                            <WereCaughtUp />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -225,9 +225,9 @@ const Home = () => {
                             dashboard.c4.slice(0, 2).map((post, i) => (
                                 <Grid key={post.pk_post_id} size={12}>
                                     <Link to={`/comunicacion-interna?tab=Espacio C4&id=${i + 1}`}>
-                                        <Card variant="outlined">
-                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} title={post.title} />
-                                            <CardContent>
+                                        <Card variant="outlined" sx={{ display: 'flex', height: '15vh', }}>
+                                            <CardMedia component="img" src={post.file ? `data:image/${post.file_extension};base64,${post.file}` : notImage} sx={{ maxWidth: '35%', }} title={post.title} />
+                                            <CardContent sx={{ width: '65%', }}>
                                                 <Typography component="div" variant="body2" color="primary" fontWeight="bold">{post.title}</Typography>
                                                 <StylizedPreviewContent component="div" variant="body2" color="primary" mt={1} title="Clic para ver publicación...">{post.content.replace(/<\/?[^>]+(>|$)/g, '')}</StylizedPreviewContent>
                                             </CardContent>
@@ -236,7 +236,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <CardMedia component="img" src={notContent} />}
+                            <WereCaughtUp />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
@@ -269,17 +269,15 @@ const Home = () => {
                                 <Typography variant="body2" color="primary" textAlign="right"><Link to="/comunicacion-interna?tab=Novedades">Ver más...</Link></Typography>
                             </>
                             :
-                            <CardMedia component="img" src={notContent} />}
+                            <WereCaughtUp />}
                     </Grid>
                 </Grid>
                 <Grid size={isMdDownScreen ? 12 : 4} bgcolor="white" borderRadius={1} p={1}>
-                    <Grid container spacing={1} direction="column">
-                        <Grid size={12}>
-                            <Typography variant="body1" fontWeight="bold" color="primary">
-                                <StylizedLink to="/comunicacion-interna?tab=Cumpleaños" title="Clic para ver los cumpleaños de la semana">Cumpleaños<StylizedIcon className="ri-cake-2-line ml-1"></StylizedIcon></StylizedLink>
-                            </Typography>
-                            <hr />
-                        </Grid>
+                    <Typography variant="body1" fontWeight="bold" color="primary">
+                        <StylizedLink to="/comunicacion-interna?tab=Cumpleaños" title="Clic para ver los cumpleaños de la semana">Cumpleaños<StylizedIcon className="ri-cake-2-line ml-1"></StylizedIcon></StylizedLink>
+                    </Typography>
+                    <hr />
+                    <Grid container spacing={2} direction="row">
                         {dashboard.birthdays && dashboard.birthdays.length > 0 ?
                             dashboard.birthdays.map(post => (
                                 <Grid key={post.pk_birthday_id} size={12}>
@@ -300,7 +298,7 @@ const Home = () => {
                                 </Grid>
                             ))
                             :
-                            <CardMedia component="img" src={notContent} />}
+                            <WereCaughtUp />}
                     </Grid>
                 </Grid>
             </Grid>
