@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import {
     Grid2 as Grid,
+    Paper,
     useTheme,
 } from "@mui/material";
 
