@@ -97,7 +97,7 @@ const Profile = () => {
     }, [user.pk_user_id, formData, dispatch, handleNotification]);
 
     return (
-        <GridLayout columnSpacing={3}>
+        <GridLayout columnSpacing={0}>
             <Grid size={12}>
                 <Typography variant="h6" fontWeight="bold" color="primary">MI PERFIL</Typography>
                 <Grid container spacing={2}>

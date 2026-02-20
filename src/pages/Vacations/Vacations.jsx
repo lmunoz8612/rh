@@ -36,7 +36,7 @@ const Vacations = () => {
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <GridLayout columnSpacing={2} maxHeight={true}>
+        <GridLayout columnSpacing={0} maxHeight={true}>
             <Grid size={12}>
                 <Typography variant="h6" fontWeight="bold" color="primary" className="mb-2">MIS VACACIONES</Typography>
                 <Button variant="contained" color="primary" sx={{ borderRadius: 2 }} fullWidth={isSmallScreen ? true : false}>

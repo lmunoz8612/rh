@@ -28,9 +28,6 @@ const GridLayout = (props) => {
                     borderRadius: 1,
                     borderColor: theme.palette.primary.main,
                     minHeight: maxHeight ? '100%' : '',
-                    padding: 2,
-                    marginLeft: 2,
-                    marginRight: 2,
                     ...style
                 }}
             >

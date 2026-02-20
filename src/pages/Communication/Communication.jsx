@@ -164,7 +164,7 @@ const Communication = () => {
     if (loading) return (<Backdrop open={loading} invisible><CircularProgress /></Backdrop>);
 
     return (
-        <GridLayout columnSpacing={2} maxHeight>
+        <GridLayout columnSpacing={0} maxHeight>
             <Grid size={12}>
                 <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
                     COMUNICACIÓN INTERNA
