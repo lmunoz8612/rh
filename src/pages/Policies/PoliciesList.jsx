@@ -225,7 +225,7 @@ const PoliciesList = () => {
 
     return (
         <>
-            <GridLayout columnSpacing={2} maxHeight>
+            <GridLayout columnSpacing={0} maxHeight>
                 <Grid size={12}>
                     <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
                         POLÍTICAS DE LA EMPRESA
