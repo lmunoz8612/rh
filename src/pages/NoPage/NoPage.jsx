@@ -1,4 +1,3 @@
-import React from 'react';
 import NoPagePlaceholder from '../../components/Placeholders/404';
 
 const NoPage = () => {
