@@ -154,7 +154,7 @@ const Home = () => {
     if (loading) return (<Backdrop open={loading} invisible><CircularProgress /></Backdrop>);
 
     return (
-        <Paper sx={{ p: 2, }}>
+        <Paper sx={{ p: 2, }} style={{ height: '100%' }}>
             <Grid container spacing={3}>
                 <Grid size={12} display="flex">
                     <Typography variant="h6" color="primary" width="80%">¡<b>Bienvenido,</b> {user.full_name}!</Typography>

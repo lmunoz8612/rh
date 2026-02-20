@@ -16,24 +16,26 @@ const GridLayout = (props) => {
     const theme = useTheme();
 
     return (
-        <Grid
-            container
-            columnSpacing={columnSpacing}
-            rowSpacing={rowSpacing}
-            border={1}
-            direction={direction}
-            sx={{
-                borderRadius: 1,
-                borderColor: theme.palette.primary.main,
-                minHeight: maxHeight ? '100%' : '',
-                padding: 2,
-                marginLeft: 2,
-                marginRight: 2,
-                ...style
-            }}
-        >
-            {children}
-        </Grid>
+        <Paper sx={{ p: 2, }} style={{ height: '100%' }}>
+            <Grid
+                container
+                columnSpacing={columnSpacing}
+                rowSpacing={rowSpacing}
+                border={0}
+                direction={direction}
+                sx={{
+                    borderRadius: 1,
+                    borderColor: theme.palette.primary.main,
+                    minHeight: maxHeight ? '100%' : '',
+                    padding: 2,
+                    marginLeft: 2,
+                    marginRight: 2,
+                    ...style
+                }}
+            >
+                {children}
+            </Grid>
+        </Paper>
     )
 };
 

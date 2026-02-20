@@ -164,22 +164,20 @@ const Communication = () => {
     if (loading) return (<Backdrop open={loading} invisible><CircularProgress /></Backdrop>);
 
     return (
-        <>
-            <GridLayout columnSpacing={2} maxHeight>
-                <Grid size={12}>
-                    <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
-                        COMUNICACIÓN INTERNA
-                    </Typography>
-                    <HorizontalTabs tabLabels={tabLabels} tabValues={[
-                        dashboard.posts && dashboard.posts.length > 0 ? renderTabContent('posts', dashboard.posts, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                        dashboard.events && dashboard.events.length > 0 ? renderTabContent('events', dashboard.events, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                        dashboard.c4 && dashboard.c4.length > 0 ? renderTabContent('c4', dashboard.c4, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                        dashboard.news && dashboard.news.length > 0 ? renderTabContent('news', dashboard.news) : <CardMedia component="img" src={notContent} />,
-                        dashboard.birthdays && dashboard.birthdays.length > 0 ? renderTabContent('birthdays', dashboard.birthdays) : <CardMedia component="img" src={notContent} />,
-                    ]} defaultValue={tab ? tabLabels.indexOf(tab) : 0} />
-                </Grid>
-            </GridLayout>
-        </>
+        <GridLayout columnSpacing={2} maxHeight>
+            <Grid size={12}>
+                <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
+                    COMUNICACIÓN INTERNA
+                </Typography>
+                <HorizontalTabs tabLabels={tabLabels} tabValues={[
+                    dashboard.posts && dashboard.posts.length > 0 ? renderTabContent('posts', dashboard.posts, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                    dashboard.events && dashboard.events.length > 0 ? renderTabContent('events', dashboard.events, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                    dashboard.c4 && dashboard.c4.length > 0 ? renderTabContent('c4', dashboard.c4, (postId - 1)) : <CardMedia component="img" src={notContent} />,
+                    dashboard.news && dashboard.news.length > 0 ? renderTabContent('news', dashboard.news) : <CardMedia component="img" src={notContent} />,
+                    dashboard.birthdays && dashboard.birthdays.length > 0 ? renderTabContent('birthdays', dashboard.birthdays) : <CardMedia component="img" src={notContent} />,
+                ]} defaultValue={tab ? tabLabels.indexOf(tab) : 0} />
+            </Grid>
+        </GridLayout>
     );
 };
 
