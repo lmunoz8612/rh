@@ -159,7 +159,7 @@ const PoliciesList = () => {
                 signed: 1,
             });
 
-            handleNotification('success', 'Políticas firmadas exitosamente: ¡Ahora puede utilizar la plataforma VICA!',);
+            handleNotification('success', 'Políticas firmadas exitosamente: ¡Ahora puede utilizar la plataforma RH!',);
             setTimeout(() => { window.location.reload(); }, 3000);
         }
         catch (error) {
@@ -420,7 +420,7 @@ const PoliciesList = () => {
             {/* Diálogo de notificación */}
             <Dialog open={openWelcomeDialog} onClose={handleCloseWelcomeDialog}>
                 <img src={logo} className="mt-2" style={{ width: '30%', margin: 'auto' }} alt="logo" title='VxHR' />
-                <DialogTitle>¡Bienvenid@ a VICA!</DialogTitle>
+                <DialogTitle>¡Bienvenid@ a RH!</DialogTitle>
                 <DialogContent>
                     <Typography variant="body1" color="primary" mb={1}>
                         Tu aliado en la gestión de procesos de Recursos Humanos
