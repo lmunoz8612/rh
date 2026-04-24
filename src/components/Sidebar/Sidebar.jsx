@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router';
-import MenuRoutes from '../../routes/MenuRoutes/MenuRoutes.jsx';
+import MenuRoutes from 'routes/MenuRoutes/MenuRoutes.jsx';
 import {
     useMediaQuery,
     useTheme,

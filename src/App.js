@@ -1,8 +1,8 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import store from './redux/store/store.js';
+import store from 'store/store/store.js';
 
-import Sidebar from './components/Sidebar/Sidebar';
+import Sidebar from 'components/Sidebar/Sidebar';
 import { Box } from '@mui/system';
 import { ThemeProvider, CssBaseline } from '@mui/material';
 import { AppStyles } from './App.css.js';

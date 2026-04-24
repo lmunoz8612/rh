@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../context/Auth/Auth';
+import { useAuth } from 'context/Auth/Auth';
 import {
     Grid2 as Grid,
     Table,
@@ -17,11 +17,11 @@ import {
     Backdrop,
     CircularProgress
 } from '@mui/material';
-import GridLayout from '../../components/GridLayout/GridLayout';
-import SearchInput from '../../components/SearchInput/SearchInput';
-import NoData from '../../components/Placeholders/NoData';
-import { ROLES } from '../../assets/constants/constants';
-import api from '../../api/api';
+import GridLayout from 'components/GridLayout/GridLayout';
+import SearchInput from 'components/SearchInput/SearchInput';
+import NoData from 'components/Placeholders/NoData';
+import { ROLES } from 'assets/constants/constants';
+import api from 'api/api';
 
 const splitDataIntoChunks = (data, chunkSize = 10) => {
     let result = [];

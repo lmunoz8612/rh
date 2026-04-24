@@ -14,10 +14,10 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import ZoomableContainer from '../Zoom/Zoom';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import api from '../../api/api';
+import api from 'api/api';
 import NoData from '../Placeholders/NoData';
 
 const StylizedTreeContainer = styled(Box)(() => ({

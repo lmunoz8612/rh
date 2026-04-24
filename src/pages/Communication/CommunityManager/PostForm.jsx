@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useParams, } from 'react-router';
-import GridLayout from '../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Breadcrumbs,
     Button,
@@ -11,13 +11,13 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import FormField from '../../../components/Forms/FormField/FormField';
-import Select from '../../../components/Select/Select';
-import RoleButton from '../../../components/RoleButton/RoleButton';
-import Notification from '../../../components/Notification/Notification';
-import TextEditorV2 from '../../../components/TextEditor/TextEditorV2';
-import { ROLES } from '../../../assets/constants/constants';
-import api from '../../../api/api';
+import FormField from 'components/Forms/FormField/FormField';
+import Select from 'components/Select/Select';
+import RoleButton from 'components/RoleButton/RoleButton';
+import Notification from 'components/Notification/Notification';
+import TextEditorV2 from 'components/TextEditor/TextEditorV2';
+import { ROLES } from 'assets/constants/constants';
+import api from 'api/api';
 import { Clear } from '@mui/icons-material';
 
 const isFormInvalid = (formData) => (

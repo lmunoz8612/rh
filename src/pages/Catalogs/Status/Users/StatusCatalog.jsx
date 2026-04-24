@@ -1,5 +1,5 @@
 import React from 'react';
-import GridLayout from '../../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Backdrop,
     Breadcrumbs,
@@ -18,9 +18,9 @@ import {
     Typography
 } from '@mui/material';
 import { Link, } from 'react-router';
-import NoData from '../../../../components/Placeholders/NoData';
-import { formatDate, padWithZeros } from '../../../../assets/utils/utils';
-import api from '../../../../api/api';
+import NoData from 'components/Placeholders/NoData';
+import { formatDate, padWithZeros } from 'assets/utils/utils';
+import api from 'api/api';
 
 const STATUS_MAP = {
     1: { label: 'Activa', color: 'success' },

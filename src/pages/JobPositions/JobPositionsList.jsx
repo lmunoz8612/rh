@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAuth } from '../../context/Auth/Auth';
+import { useAuth } from 'context/Auth/Auth';
 import { useNavigate } from 'react-router';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Backdrop,
     Chip,
@@ -20,13 +20,13 @@ import {
     useMediaQuery,
     useTheme
 } from '@mui/material';
-import RoleButton from '../../components/RoleButton/RoleButton';
-import SearchInput from '../../components/SearchInput/SearchInput';
-import MenuMoreVert from '../../components/Menu/MoreVert';
-import NoData from '../../components/Placeholders/NoData';
-import { ROLES } from '../../assets/constants/constants';
-import { padWithZeros, formatDate } from '../../assets/utils/utils';
-import api from '../../api/api';
+import RoleButton from 'components/RoleButton/RoleButton';
+import SearchInput from 'components/SearchInput/SearchInput';
+import MenuMoreVert from 'components/Menu/MoreVert';
+import NoData from 'components/Placeholders/NoData';
+import { ROLES } from 'assets/constants/constants';
+import { padWithZeros, formatDate } from 'assets/utils/utils';
+import api from 'api/api';
 
 const ADMIN_STATUS_COLOR = {
     1: 'primary',

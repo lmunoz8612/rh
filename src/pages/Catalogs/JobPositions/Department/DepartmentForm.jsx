@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useParams, } from 'react-router';
-import GridLayout from '../../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Breadcrumbs,
     Button,
@@ -10,12 +10,12 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import FormField from '../../../../components/Forms/FormField/FormField';
-import RoleButton from '../../../../components/RoleButton/RoleButton';
-import { ROLES } from '../../../../assets/constants/constants';
-import api from '../../../../api/api';
-import Notification from '../../../../components/Notification/Notification';
-import Catalog from '../../../../components/Catalog/Catalog';
+import FormField from 'components/Forms/FormField/FormField';
+import RoleButton from 'components/RoleButton/RoleButton';
+import { ROLES } from 'assets/constants/constants';
+import api from 'api/api';
+import Notification from 'components/Notification/Notification';
+import Catalog from 'components/Catalog/Catalog';
 
 const JobPositionDepartmentForm = () => {
     const { id, } = useParams();

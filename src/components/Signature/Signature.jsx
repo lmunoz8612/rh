@@ -8,7 +8,7 @@ import {
     useTheme,
 } from '@mui/material';
 import { useSelector } from 'react-redux';
-import api from '../../api/api';
+import api from 'api/api';
 
 const StylizedContainer = styled(Box)(() => ({
     alignItems: 'center',

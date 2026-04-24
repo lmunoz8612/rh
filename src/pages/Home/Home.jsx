@@ -20,11 +20,11 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import Weather from '../../components/Weather/Weather';
-import notImage from '../../assets/imgs/placeholders/notImage.jpg';
-import WereCaughtUp from '../../components/Placeholders/WereCaughtUp';
-import { $ } from '../../assets/utils/utils';
-import api from '../../api/api';
+import Weather from 'components/Weather/Weather';
+import notImage from 'assets/imgs/placeholders/notImage.jpg';
+import WereCaughtUp from 'components/Placeholders/WereCaughtUp';
+import { $ } from 'assets/utils/utils';
+import api from 'api/api';
 import { Link } from 'react-router';
 
 const StylizedIcon = styled('i')(({ theme }) => ({

@@ -7,7 +7,7 @@ import {
     Editor,
     Toolbar
 } from 'react-simple-wysiwyg';
-import { $ } from '../../assets/utils/utils';
+import { $ } from 'assets/utils/utils';
 
 const ButtonBold = createButton('Negrita', <i className="ri-bold"></i>, 'bold');
 const ButtonItalic = createButton('Cursiva', <i className="ri-italic"></i>, 'italic');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { useAuth } from '../../context/Auth/Auth';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import { useAuth } from 'context/Auth/Auth';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Backdrop,
     CardMedia,
@@ -12,14 +12,14 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import WorkAnniversary from '../../templates/WorkAnniversary';
-import HappyBirthday from '../../templates/HappyBirthday';
-import HorizontalTabs from '../../components/Tabs/Horizontal';
-import VerticalTabs from '../../components/Tabs/Vertical';
-import { ROLES } from '../../assets/constants/constants';
-import RHIcon from '../../assets/imgs/RH.ico';
-import notContent from '../../assets/imgs/placeholders/notContent.png';
-import api from '../../api/api';
+import WorkAnniversary from 'templates/WorkAnniversary';
+import HappyBirthday from 'templates/HappyBirthday';
+import HorizontalTabs from 'components/Tabs/Horizontal';
+import VerticalTabs from 'components/Tabs/Vertical';
+import { ROLES } from 'assets/constants/constants';
+import RHIcon from 'assets/imgs/RH.ico';
+import notContent from 'assets/imgs/placeholders/notContent.png';
+import api from 'api/api';
 
 const StylizedLabelContainer = styled('div')(({ theme }) => ({
     display: 'flex',

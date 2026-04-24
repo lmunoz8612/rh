@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate, useParams } from 'react-router';
-import GridLayout from '../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Button,
     Grid2 as Grid,
@@ -9,12 +9,12 @@ import {
     useMediaQuery,
     useTheme
 } from '@mui/material';
-import FormField from '../../../components/Forms/FormField/FormField';
-import RoleButton from '../../../components/RoleButton/RoleButton';
-import Catalog from '../../../components/Catalog/Catalog';
-import Notification from '../../../components/Notification/Notification';
-import { ROLES } from '../../../assets/constants/constants';
-import api from '../../../api/api';
+import FormField from 'components/Forms/FormField/FormField';
+import RoleButton from 'components/RoleButton/RoleButton';
+import Catalog from 'components/Catalog/Catalog';
+import Notification from 'components/Notification/Notification';
+import { ROLES } from 'assets/constants/constants';
+import api from 'api/api';
 
 const isFormInvalid = (formData) => (
     Object.entries(formData).some(([_, value]) => value === null || value === undefined || value === '')

@@ -26,11 +26,11 @@ import {
     useMediaQuery,
     useTheme
 } from '@mui/material';
-import GridLayout from '../../components/GridLayout/GridLayout';
-import MenuMoreVert from '../../components/Menu/MoreVert';
-import { $, formatDate, padWithZeros } from '../../assets/utils/utils';
-import logo from '../../assets/imgs/logo.jpg';
-import api from '../../api/api';
+import GridLayout from 'components/GridLayout/GridLayout';
+import MenuMoreVert from 'components/Menu/MoreVert';
+import { $, formatDate, padWithZeros } from 'assets/utils/utils';
+import logo from 'assets/imgs/logo.jpg';
+import api from 'api/api';
 
 const StylizedChip = styled(Chip)(({ theme }) => ({
     color: theme.palette.common.white,

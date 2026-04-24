@@ -12,14 +12,14 @@ import {
     useTheme,
 } from '@mui/material';
 import { KeyboardArrowDown } from '@mui/icons-material';
-import FormField from '../../../components/Forms/FormField/FormField';
-import Catalog from '../../../components/Catalog/Catalog';
-import GridLayout from '../../../components/GridLayout/GridLayout';
-import RoleButton from '../../../components/RoleButton/RoleButton';
-import Notification from '../../../components/Notification/Notification';
-import { ROLES } from '../../../assets/constants/constants';
-import { padWithZeros } from '../../../assets/utils/utils';
-import api from '../../../api/api';
+import FormField from 'components/Forms/FormField/FormField';
+import Catalog from 'components/Catalog/Catalog';
+import GridLayout from 'components/GridLayout/GridLayout';
+import RoleButton from 'components/RoleButton/RoleButton';
+import Notification from 'components/Notification/Notification';
+import { ROLES } from 'assets/constants/constants';
+import { padWithZeros } from 'assets/utils/utils';
+import api from 'api/api';
 
 const form = [
     {

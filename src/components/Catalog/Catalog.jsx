@@ -7,7 +7,7 @@ import {
     useTheme,
     TextField,
 } from '@mui/material';
-import api from '../../api/api';
+import api from 'api/api';
 import { CATALOG_FIELDS } from './CatalogFields.js';
 
 const Catalog = ({ name = '', label, value, apiEndpoint, onChange, parentId, excludeOption = '', extraOption, className, placeholder = '<Seleccione una opción>', error, ...rest }) => {

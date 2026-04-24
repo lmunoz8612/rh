@@ -1,5 +1,5 @@
 import React from 'react';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import { Grid2 as Grid, Typography } from '@mui/material';
 
 const Evaluations = () => {

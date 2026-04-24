@@ -6,7 +6,7 @@ import {
     Typography,
     useTheme
 } from '@mui/material';
-import logo from '../assets/imgs/logo.jpg';
+import logo from 'assets/imgs/logo.jpg';
 
 const HappyBirthday = ({ keyIndex, userData, isMediumScreen, ...rest }) => {
     const theme = useTheme();

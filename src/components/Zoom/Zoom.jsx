@@ -5,7 +5,7 @@ import {
     styled,
     useMediaQuery
 } from '@mui/material';
-import { $ } from '../../assets/utils/utils';
+import { $ } from 'assets/utils/utils';
 
 let newPosX = 0;
 let newPosY = 0;

@@ -7,7 +7,7 @@ import {
     Typography,
     useTheme
 } from '@mui/material';
-import logo from '../assets/imgs/logo.jpg';
+import logo from 'assets/imgs/logo.jpg';
 
 const WorkAnniversary = ({ title, usersData, isMediumScreen, ...rest }) => {
     const theme = useTheme();

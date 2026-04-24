@@ -1,11 +1,11 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useAuth } from '../../context/Auth/Auth';
-import { login as reduxlogin } from '../../redux/actions/userActions';
+import { useAuth } from 'context/Auth/Auth';
+import { login as reduxlogin } from 'store/actions/userActions';
 import { useNavigate } from 'react-router-dom';
 import CryptoJS from "crypto-js";
 import LoginForm from './LoginForm/LoginForm';
-import api from '../../api/api';
+import api from 'api/api';
 import Notification from '../Notification/Notification';
 
 const Login = () => {

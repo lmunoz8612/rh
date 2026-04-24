@@ -1,5 +1,5 @@
 import React from 'react';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import { Box, Button, Chip, Grid2 as Grid, Pagination, Paper, styled, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 const StylizedBox = styled(Box)(({ theme }) => ({

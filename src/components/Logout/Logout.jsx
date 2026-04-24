@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../../context/Auth/Auth';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import * as userAction from '../../redux/actions/userActions';
+import * as userAction from '../../store/actions/userActions';
 import api from '../../api/api';
 
 const Logout = () => {

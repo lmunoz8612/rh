@@ -8,7 +8,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router';
 import { paths } from '../paths';
-import { useAuth } from '../../context/Auth/Auth';
+import { useAuth } from 'context/Auth/Auth';
 
 const StylizedListItem = styled(ListItem)(() => ({
     paddingTop: 4,

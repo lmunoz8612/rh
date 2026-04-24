@@ -1,5 +1,5 @@
 import { CardMedia } from '@mui/material';
-import notContent from '../../assets/imgs/placeholders/notContent.png';
+import notContent from 'assets/imgs/placeholders/notContent.png';
 
 const WereCaughtUp = () => (
     <CardMedia component="img" src={notContent} />

@@ -1,4 +1,4 @@
-import NoPagePlaceholder from '../../components/Placeholders/404';
+import NoPagePlaceholder from 'components/Placeholders/404';
 
 const NoPage = () => {
     return (

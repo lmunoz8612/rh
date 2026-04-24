@@ -1,5 +1,5 @@
 import React from 'react';
-import GridLayout from '../../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Backdrop,
     Breadcrumbs,
@@ -20,12 +20,12 @@ import {
     useTheme
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router';
-import MenuMoreVert from '../../../../components/Menu/MoreVert';
-import NoData from '../../../../components/Placeholders/NoData';
-import RoleButton from '../../../../components/RoleButton/RoleButton';
-import { ROLES } from '../../../../assets/constants/constants';
-import { formatDate, padWithZeros } from '../../../../assets/utils/utils';
-import api from '../../../../api/api';
+import MenuMoreVert from 'components/Menu/MoreVert';
+import NoData from 'components/Placeholders/NoData';
+import RoleButton from 'components/RoleButton/RoleButton';
+import { ROLES } from 'assets/constants/constants';
+import { formatDate, padWithZeros } from 'assets/utils/utils';
+import api from 'api/api';
 
 const STATUS = {
     1: { label: 'Activa', color: 'success' },

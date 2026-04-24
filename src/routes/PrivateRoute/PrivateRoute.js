@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../../context/Auth/Auth';
-import PermissionDenied from '../../components/Placeholders/PermissionDenied';
+import { useAuth } from 'context/Auth/Auth';
+import PermissionDenied from 'components/Placeholders/PermissionDenied';
 
 const PrivateRoute = ({ children, roles, fallback = null }) => {
     const { auth, role, has_signed_policies, } = useAuth();

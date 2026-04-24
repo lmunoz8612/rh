@@ -11,7 +11,7 @@ import {
 } from '@mui/material';
 import { Link } from 'react-router';
 import FormField from '../../Forms/FormField/FormField.jsx';
-import logo from '../../../assets/imgs/logo.jpg';
+import logo from 'assets/imgs/logo.jpg';
 
 const StylizedIcon = styled('i')(({ theme }) => ({
     fontSize: '1.25rem',

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router';
-import { useAuth } from '../../context/Auth/Auth';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import { useAuth } from 'context/Auth/Auth';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Backdrop,
     Button,
@@ -29,16 +29,16 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import Signature from '../../components/Signature/Signature';
-import MenuMoreVert from '../../components/Menu/MoreVert';
-import HorizontalTabs from '../../components/Tabs/Horizontal';
-import RoleButton from '../../components/RoleButton/RoleButton';
-import NoData from '../../components/Placeholders/NoData';
-import Notification from '../../components/Notification/Notification';
-import { ROLES } from '../../assets/constants/constants';
-import { $, formatDate } from '../../assets/utils/utils';
-import logo from '../../assets/imgs/logo.jpg';
-import api from '../../api/api';
+import Signature from 'components/Signature/Signature';
+import MenuMoreVert from 'components/Menu/MoreVert';
+import HorizontalTabs from 'components/Tabs/Horizontal';
+import RoleButton from 'components/RoleButton/RoleButton';
+import NoData from 'components/Placeholders/NoData';
+import Notification from 'components/Notification/Notification';
+import { ROLES } from 'assets/constants/constants';
+import { $, formatDate } from 'assets/utils/utils';
+import logo from 'assets/imgs/logo.jpg';
+import api from 'api/api';
 
 const StylizedImg = styled('img')(({ theme }) => ({
     border: `1px solid ${theme.palette.primary.main}`,

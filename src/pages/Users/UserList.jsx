@@ -18,14 +18,14 @@ import {
     Backdrop,
     CircularProgress,
 } from '@mui/material';
-import GridLayout from '../../components/GridLayout/GridLayout';
-import MenuMoreVert from '../../components/Menu/MoreVert';
-import RoleButton from '../../components/RoleButton/RoleButton';
-import SearchInput from '../../components/SearchInput/SearchInput';
-import NoData from '../../components/Placeholders/NoData';
-import { ROLES } from '../../assets/constants/constants';
-import { formatDate } from '../../assets/utils/utils';
-import api from '../../api/api';
+import GridLayout from 'components/GridLayout/GridLayout';
+import MenuMoreVert from 'components/Menu/MoreVert';
+import RoleButton from 'components/RoleButton/RoleButton';
+import SearchInput from 'components/SearchInput/SearchInput';
+import NoData from 'components/Placeholders/NoData';
+import { ROLES } from 'assets/constants/constants';
+import { formatDate } from 'assets/utils/utils';
+import api from 'api/api';
 
 const STATUS = {
     1: { label: 'Activo', color: 'success' },

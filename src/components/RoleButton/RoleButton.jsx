@@ -1,5 +1,5 @@
 import React from 'react';
-import { useAuth } from '../../context/Auth/Auth';
+import { useAuth } from 'context/Auth/Auth';
 import PropTypes from 'prop-types';
 import { Button } from '@mui/material';
 

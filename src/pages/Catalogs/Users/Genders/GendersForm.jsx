@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate, useParams, } from 'react-router';
-import GridLayout from '../../../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import {
     Breadcrumbs,
     Button,
@@ -10,11 +10,11 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import FormField from '../../../../components/Forms/FormField/FormField';
-import RoleButton from '../../../../components/RoleButton/RoleButton';
-import Notification from '../../../../components/Notification/Notification';
-import { ROLES } from '../../../../assets/constants/constants';
-import api from '../../../../api/api';
+import FormField from 'components/Forms/FormField/FormField';
+import RoleButton from 'components/RoleButton/RoleButton';
+import Notification from 'components/Notification/Notification';
+import { ROLES } from 'assets/constants/constants';
+import api from 'api/api';
 
 const UserGendersForm = () => {
     const { id, } = useParams();

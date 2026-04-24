@@ -10,7 +10,7 @@ import {
     useMediaQuery,
     useTheme,
 } from '@mui/material';
-import GridLayout from '../../components/GridLayout/GridLayout';
+import GridLayout from 'components/GridLayout/GridLayout';
 import catalogsConfig from './CatalogsConfig';
 import { KeyboardArrowDown } from '@mui/icons-material';
 

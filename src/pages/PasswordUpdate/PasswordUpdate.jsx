@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
-import { useAuth } from '../../context/Auth/Auth.js';
+import { useAuth } from 'context/Auth/Auth.js';
 import {
     Box,
     Button,
@@ -9,10 +9,10 @@ import {
     styled,
     Typography
 } from '@mui/material';
-import FormField from '../../components/Forms/FormField/FormField.jsx';
-import Notification from '../../components/Notification/Notification.jsx';
-import logo from '../../assets/imgs/logo.jpg';
-import api from '../../api/api.js';
+import FormField from 'components/Forms/FormField/FormField.jsx';
+import Notification from 'components/Notification/Notification.jsx';
+import logo from 'assets/imgs/logo.jpg';
+import api from 'api/api.js';
 
 const StylizedIcon = styled('i')(({ theme }) => ({
     fontSize: '1.25rem',

@@ -6,8 +6,8 @@ import {
     styled,
     Typography
 } from '@mui/material';
-import { capitalizeString, getDateString } from '../../assets/utils/utils';
-import api from '../../api/api';
+import { capitalizeString, getDateString } from 'assets/utils/utils';
+import api from 'api/api';
 
 const StylizedWeatherContainer = styled(Box)(({ theme }) => ({
     textAlign: 'center',
