@@ -28,44 +28,49 @@ const Profile = () => {
     const dispatch = useDispatch();
     const user = useSelector(state => state.user.data);
 
+    const theme = useTheme();
+    const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+
+    const getInitialFormData = React.useCallback((user) => ({
+        work_phone: user.work_phone ?? '',
+        first_name: user.first_name ?? '',
+        last_name_1: user.last_name_1 ?? '',
+        last_name_2: user.last_name_2 ?? '',
+        birth_date: user.birth_date ?? '',
+        fk_marital_status_id: user.fk_marital_status_id ?? '',
+        personal_email: user.personal_email ?? '',
+        cel_phone: user.cel_phone ?? '',
+        curp: user.curp ?? '',
+        rfc: user.rfc ?? '',
+        imss: user.imss ?? '',
+        infonavit: user.infonavit ?? '',
+        emergency_name: user.emergency_name ?? '',
+        fk_emergency_relationship_id: user.fk_emergency_relationship_id ?? '',
+        emergency_phone: user.emergency_phone ?? '',
+    }), []);
+
+    const [formData, setFormData] = React.useState(() => getInitialFormData(user));
     const [loading, setLoading] = React.useState(false);
-    const [formData, setFormData] = React.useState({
-        work_phone: user.work_phone || '',
-        first_name: user.first_name || '',
-        last_name_1: user.last_name_1 || '',
-        last_name_2: user.last_name_2 || '',
-        birth_date: user.birth_date || '',
-        fk_marital_status_id: user.fk_marital_status_id || '',
-        personal_email: user.personal_email || '',
-        cel_phone: user.cel_phone || '',
-        curp: user.curp || '',
-        rfc: user.rfc || '',
-        imss: user.imss || '',
-        infonavit: user.infonavit || '',
-        emergency_name: user.emergency_name || '',
-        fk_emergency_relationship_id: user.fk_emergency_relationship_id || '',
-        emergency_phone: user.emergency_phone || '',
-    });
+
     const [notificationProps, setNotificationProps] = React.useState({
         open: false,
         severity: 'success',
         message: '',
     });
 
-    const theme = useTheme();
-    const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+    React.useEffect(() => {
+        setFormData(getInitialFormData(user));
+    }, [user, getInitialFormData]);
 
     const StyledAvatar = styled(Avatar)(() => ({
         height: isMediumScreen ? '35vw' : '10vw',
-        margin: '0 auto',
         width: isMediumScreen ? '35vw' : '10vw',
+        margin: '0 auto',
     }));
 
-    const handleChange = React.useCallback(e => {
-        setFormData(prevData => ({
-            ...prevData,
-            [e.target.name]: e.target.value
-        }))
+    const handleChange = React.useCallback(({ target }) => {
+        const { name, value } = target;
+        setFormData(prev => ({ ...prev, [name]: value }));
     }, []);
 
     const handleNotification = React.useCallback((severity, message, redirectTo = null) => {
@@ -78,23 +83,50 @@ const Profile = () => {
         });
     }, []);
 
+    const handleValidation = React.useCallback(() => {
+        const emptyFields = Object.keys(formData).filter(
+            field => !formData[field]?.toString().trim()
+        );
+
+        if (emptyFields.length) {
+            handleNotification('error', 'Completa todos los campos obligatorios');
+            return false;
+        }
+
+        if (!/^\d{10}$/.test(formData.cel_phone)) {
+            handleNotification('error', 'Teléfono personal inválido');
+            return false;
+        }
+
+        if (!/^\d{10}$/.test(formData.work_phone)) {
+            handleNotification('error', 'Teléfono de trabajo inválido');
+            return false;
+        }
+
+        return true;
+    }, [formData, handleNotification]);
+
     const handleSubmit = React.useCallback(async (e) => {
         e.preventDefault();
+
+        if (!handleValidation()) return;
+
         try {
             setLoading(true);
+
             const { ok, message } = await api.put(`user/${user.pk_user_id}`, formData);
+
             if (ok) {
                 dispatch(update(formData));
-                handleNotification('success', message, null);
+                handleNotification('success', message);
             }
-        }
-        catch (error) {
-            handleNotification('error', `Error en la solicitud: ${error}`, null);
-        }
-        finally {
+
+        } catch (error) {
+            handleNotification('error', 'Error en la solicitud');
+        } finally {
             setLoading(false);
         }
-    }, [user.pk_user_id, formData, dispatch, handleNotification]);
+    }, [user.pk_user_id, formData, dispatch, handleValidation, handleNotification]);
 
     return (
         <GridLayout columnSpacing={0}>
