@@ -7,7 +7,6 @@ import {
     Box,
     Button,
     Grid2 as Grid,
-    IconButton,
     styled,
     Typography,
     useMediaQuery,
@@ -51,6 +50,7 @@ const Profile = () => {
 
     const [formData, setFormData] = React.useState(() => getInitialFormData(user));
     const [loading, setLoading] = React.useState(false);
+    const [formError, setFormError] = React.useState({});
 
     const [notificationProps, setNotificationProps] = React.useState({
         open: false,
@@ -63,6 +63,8 @@ const Profile = () => {
     }, [user, getInitialFormData]);
 
     const StyledAvatar = styled(Avatar)(() => ({
+        borderRadius: "50%",
+        border: `2px solid ${theme.palette.primary.main}`,
         height: isMediumScreen ? '35vw' : '10vw',
         width: isMediumScreen ? '35vw' : '10vw',
         margin: '0 auto',
@@ -70,6 +72,7 @@ const Profile = () => {
 
     const handleChange = React.useCallback(({ target }) => {
         const { name, value } = target;
+        setFormError(prev => ({ ...prev, [name]: false }));
         setFormData(prev => ({ ...prev, [name]: value }));
     }, []);
 
@@ -88,18 +91,45 @@ const Profile = () => {
             field => !formData[field]?.toString().trim()
         );
 
-        if (emptyFields.length) {
-            handleNotification('error', 'Completa todos los campos obligatorios');
-            return false;
-        }
-
-        if (!/^\d{10}$/.test(formData.cel_phone)) {
-            handleNotification('error', 'Teléfono personal inválido');
+        if (emptyFields.length > 0) {
+            setFormError(emptyFields.reduce((acc, field) => ({ ...acc, [field]: true }), {}));
+            handleNotification('error', 'Error: Completa todos los campos obligatorios');
             return false;
         }
 
         if (!/^\d{10}$/.test(formData.work_phone)) {
-            handleNotification('error', 'Teléfono de trabajo inválido');
+            handleNotification('error', 'Error: Teléfono de trabajo inválido');
+            setFormError(prev => ({ ...prev, work_phone: true }));
+            return false;
+        }
+
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.personal_email)) {
+            handleNotification('error', 'Error: Correo personal inválido');
+            setFormError(prev => ({ ...prev, personal_email: true }));
+            return false;
+        }
+
+        if (!/^[A-Z0-9]{18}$/.test(formData.curp)) {
+            handleNotification('error', 'Error: CURP inválida');
+            setFormError(prev => ({ ...prev, curp: true }));
+            return false;
+        }
+
+        if (!/^[A-Z0-9]{13}$/.test(formData.rfc)) {
+            handleNotification('error', 'Error: RFC inválido');
+            setFormError(prev => ({ ...prev, rfc: true }));
+            return false;
+        }
+
+        if (!/^\d{11}$/.test(formData.imss)) {
+            handleNotification('error', 'Error: Número de IMSS inválido');
+            setFormError(prev => ({ ...prev, imss: true }));
+            return false;
+        }
+
+        if (!/^\d{10}$/.test(formData.cel_phone)) {
+            handleNotification('error', 'Error: Teléfono personal inválido');
+            setFormError(prev => ({ ...prev, cel_phone: true }));
             return false;
         }
 
@@ -131,7 +161,7 @@ const Profile = () => {
     return (
         <GridLayout columnSpacing={0}>
             <Grid size={12}>
-                <Typography variant="h6" fontWeight="bold" color="primary">MI PERFIL</Typography>
+                <Typography variant="h6" fontWeight="bold" color="primary">EDITAR MI PERFIL</Typography>
                 <Grid container spacing={2}>
                     {!isMediumScreen && <Grid size={2}></Grid>}
                     {!isMediumScreen &&
@@ -140,10 +170,6 @@ const Profile = () => {
                         </Grid>}
                     <Grid size={isMediumScreen ? 12 : 2} textAlign="center">
                         <StyledAvatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
-                        <Box textAlign={"center"} mt={1}>
-                            <IconButton sx={{ padding: 0.3, }}><i className="ri-image-edit-line" /></IconButton>
-                            <IconButton sx={{ padding: 0.3, }}><i className="ri-delete-bin-line" /></IconButton>
-                        </Box>
                     </Grid>
                     {isMediumScreen &&
                         <Grid size={10} textAlign="left">
@@ -151,7 +177,7 @@ const Profile = () => {
                         </Grid>}
                     <Grid size={isMediumScreen ? 12 : 5} sx={{ mt: isMediumScreen ? 1 : '', }}>
                         <FormField label="*Usuario" value={user.username || ''} disabled />
-                        <FormField label="*Teléfono de Trabajo" name="work_phone" value={formData.work_phone || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 10, } }} />
+                        <FormField label="*Teléfono de Trabajo" name="work_phone" value={formData.work_phone || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 10, } }} error={formError.work_phone} />
                         <FormField label="*Area" value={user.job_position_area || ''} sx={{ mt: 2, }} disabled />
                         <FormField label="*Oficina" value={user.job_position_office || ''} sx={{ mt: 2, }} disabled />
                     </Grid>
@@ -171,8 +197,8 @@ const Profile = () => {
                             <Grid container textAlign="center" spacing={2}></Grid>
                         </Grid>}
                     <Grid size={isMediumScreen ? 12 : 5}>
-                        <FormField name="first_name" label="*Nombre" value={formData.first_name || ''} onChange={handleChange} />
-                        <FormField name="last_name_2" label="*Apellido Materno" value={formData.last_name_2 || ''} sx={{ mt: 2, }} onChange={handleChange} />
+                        <FormField name="first_name" label="*Nombre" value={formData.first_name || ''} onChange={handleChange} error={formError.first_name} />
+                        <FormField name="last_name_2" label="*Apellido Materno" value={formData.last_name_2 || ''} sx={{ mt: 2, }} onChange={handleChange} error={formError.last_name_2} />
                         <Catalog
                             name="fk_marital_status_id"
                             apiEndpoint="catalog/user/marital_status/?available=1"
@@ -192,13 +218,13 @@ const Profile = () => {
                             className="mt-2" />
                     </Grid>
                     <Grid size={isMediumScreen ? 12 : 5}>
-                        <FormField name="last_name_1" label="*Apellido Paterno" value={formData.last_name_1 || ''} onChange={handleChange} />
+                        <FormField name="last_name_1" label="*Apellido Paterno" value={formData.last_name_1 || ''} onChange={handleChange} error={formError.last_name_1} />
                         <FormField name="birth_date" label="*Fecha de Nacimiento" type="date" value={formData.birth_date || ''} sx={{ mt: 2, }} onChange={handleChange} disabled />
-                        <FormField name="personal_email" label="*Correo Personal" value={formData.personal_email || ''} sx={{ mt: 2, }} onChange={handleChange} />
-                        <FormField name="curp" label="*CURP" value={formData.curp || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 18, } }} />
-                        <FormField name="imss" label="*IMSS" value={formData.imss || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 11, } }} />
-                        <FormField name="emergency_name" label="*Nombre de Contacto de Emergencia" value={formData.emergency_name || ''} sx={{ mt: 2, }} onChange={handleChange} />
-                        <FormField name="emergency_phone" label="*Número de Emergencia" value={formData.emergency_phone || ''} sx={{ mt: 2, }} onChange={handleChange} />
+                        <FormField name="personal_email" label="*Correo Personal" value={formData.personal_email || ''} sx={{ mt: 2, }} onChange={handleChange} error={formError.personal_email} />
+                        <FormField name="curp" label="*CURP" value={formData.curp || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 18, } }} error={formError.curp} />
+                        <FormField name="imss" label="*IMSS" value={formData.imss || ''} sx={{ mt: 2, }} onChange={handleChange} slotProps={{ htmlInput: { maxLength: 11, } }} error={formError.imss} />
+                        <FormField name="emergency_name" label="*Nombre de Contacto de Emergencia" value={formData.emergency_name || ''} sx={{ mt: 2, }} onChange={handleChange} error={formError.emergency_name} />
+                        <FormField name="emergency_phone" label="*Número de Emergencia" value={formData.emergency_phone || ''} sx={{ mt: 2, }} onChange={handleChange} error={formError.emergency_phone} />
                     </Grid>
                     {!isMediumScreen && <Grid size={2}></Grid>}
                     <Grid size={isMediumScreen ? 12 : 5}></Grid>

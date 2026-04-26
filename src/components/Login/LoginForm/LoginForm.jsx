@@ -30,7 +30,6 @@ const classes = {
     },
     logo: {
         borderRadius: '8px 8px 0px 0px',
-        marginBottom: 32,
         width: '100%',
     },
     form: {

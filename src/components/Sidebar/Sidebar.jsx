@@ -11,11 +11,12 @@ import {
     IconButton,
     Avatar,
     Typography,
-    Stack
+    Stack,
+    styled
 } from '@mui/material';
 import { Menu } from '@mui/icons-material';
-import { isEmptyObject } from '../../assets/utils/utils.js';
-import logo from '../../assets/imgs/logo.jpg';
+import { isEmptyObject } from 'assets/utils/utils.js';
+import logo from 'assets/imgs/logo.jpg';
 
 const Sidebar = () => {
     const user = useSelector((state) => state.user.data);
@@ -28,6 +29,11 @@ const Sidebar = () => {
     const theme = useTheme();
     const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
     const drawerWidth = 220; // px.
+
+    const StyledAvatar = styled(Avatar)(() => ({
+        borderRadius: "50%",
+        border: `1px solid ${theme.palette.common.white}`
+    }));
 
     React.useEffect(() => {
         if (isSmallScreen) {
@@ -55,7 +61,7 @@ const Sidebar = () => {
                 sx={{ width: drawerWidth, }}>
                 <Box sx={{ backgroundColor: theme.palette.common.white, }}>
                     <Link to="/home">
-                        <img src={logo} alt="logo" width={'100%'} height={'100%'} title='RH' />
+                        <img src={logo} alt="logo" width={'70%'} title='RH' />
                     </Link>
                 </Box>
                 <Box className="pd-2" overflow="auto" textAlign="left">
@@ -68,7 +74,7 @@ const Sidebar = () => {
                             cursor: "pointer"
                         }}
                         onClick={handleAvatarClick}>
-                        <Avatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
+                        <StyledAvatar src={user.file ? `data:image/${user.file_extension};base64,${user.file}` : ''} />
                         {(user?.first_name && user?.last_name_1 && user?.last_name_2) ?
                             <Typography variant="body1" fontWeight="bold" color="white">{`${user?.first_name} ${user?.last_name_1} ${user?.last_name_2}`}</Typography>
                             :
