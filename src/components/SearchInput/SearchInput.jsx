@@ -25,7 +25,7 @@ const SearchInput = ({ data, filters, onFilter, onPage, lastPage, ...rest }) => 
 
     return (
         <TextField
-            label="Buscar Por"
+            label="Buscar por:"
             placeholder="Buscar..."
             size="small"
             fullWidth={rest.fullWidth ? true : false}

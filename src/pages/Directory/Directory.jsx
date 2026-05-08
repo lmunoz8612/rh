@@ -82,7 +82,7 @@ const Directory = () => {
                     onFilter={setFilteredUsers}
                     onPage={setPage}
                     lastPage={lastPage}
-                    placeholder="Nombre, Puesto, Departamento, Oficina, Correo Electrónico..."
+                    placeholder="Nombre, Puesto, Departamento, Oficina o Correo Electrónico"
                     sx={{ mt: 2, float: 'right', width: isMediumScreen ? '100%' : '33%', }}
                 />
                 {filteredUsers.length > 0 ?
