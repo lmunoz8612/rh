@@ -23,7 +23,7 @@ const Login = () => {
 
     const encryptedPassword = (password) => {
         const iv = CryptoJS.lib.WordArray.random(16);
-        const secretKey = process.env.REACT_APP_ENCRIPT_PASSWORD_KEY || window.env.REACT_APP_ENCRIPT_PASSWORD_KEY;
+        const secretKey = process.env.REACT_APP_ENCRYPT_PASSWORD_KEY;
         const encrypted = CryptoJS.AES.encrypt(password, CryptoJS.enc.Utf8.parse(secretKey), {
             iv: iv,
             mode: CryptoJS.mode.CBC,
