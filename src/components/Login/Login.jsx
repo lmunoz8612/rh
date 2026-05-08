@@ -82,6 +82,9 @@ const Login = () => {
         if (auth) {
             navigate('/home');
         }
+        console.log(process);
+        console.log(process.env);
+        console.log(config);
     }, [auth, navigate,]);
 
     return (
