@@ -18,10 +18,10 @@
 .DS_Store
 .env
 .env.production
-/husky
 .prettierignore
 .prettierrc
 package-lock.json
+.husky/
 
 npm-debug.log*
 yarn-debug.log*
