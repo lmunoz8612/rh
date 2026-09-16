@@ -16,30 +16,30 @@ import { useAuth } from './context/Auth/Auth';
 import BrowserRouters from './routes/BrowserRoutes/BrowserRouters';
 
 const App = () => {
-    const { auth, } = useAuth();
-    const classes = AppStyles();
+  const { auth } = useAuth();
+  const classes = AppStyles();
 
-    return (
-        <Provider store={store}>
-            <ThemeProvider theme={theme}>
-                <CssBaseline />
-                <div className={`App${auth ? ' Auth' : ''}`}>
-                    {auth ?
-                        <>
-                            <Sidebar />
-                            <Box component="main" sx={classes.main}>
-                                <BrowserRouters />
-                            </Box>
-                        </>
-                        :
-                        <Box sx={classes.App}>
-                            <BrowserRouters />
-                        </Box>
-                    }
-                </div>
-            </ThemeProvider>
-        </Provider>
-    )
-}
+  return (
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <div className={`App${auth ? ' Auth' : ''}`}>
+          {auth ? (
+            <>
+              <Sidebar />
+              <Box component="main" sx={classes.main}>
+                <BrowserRouters />
+              </Box>
+            </>
+          ) : (
+            <Box sx={classes.App}>
+              <BrowserRouters />
+            </Box>
+          )}
+        </div>
+      </ThemeProvider>
+    </Provider>
+  );
+};
 
 export default App;

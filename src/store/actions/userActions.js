@@ -1,19 +1,19 @@
 export const login = (data) => {
-    return {
-        type: 'LOGIN',
-        payload: data,
-    };
+  return {
+    type: 'LOGIN',
+    payload: data,
+  };
 };
 
 export const logout = () => {
-    return {
-        type: 'LOGOUT',
-    };
+  return {
+    type: 'LOGOUT',
+  };
 };
 
 export const update = (data) => {
-    return {
-        type: 'UPDATE',
-        payload: data,
-    };
+  return {
+    type: 'UPDATE',
+    payload: data,
+  };
 };

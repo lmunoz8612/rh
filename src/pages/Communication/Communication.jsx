@@ -3,14 +3,14 @@ import { useSelector } from 'react-redux';
 import { useAuth } from 'context/Auth/Auth';
 import GridLayout from 'components/GridLayout/GridLayout';
 import {
-    Backdrop,
-    CardMedia,
-    CircularProgress,
-    Grid2 as Grid,
-    styled,
-    Typography,
-    useMediaQuery,
-    useTheme,
+  Backdrop,
+  CardMedia,
+  CircularProgress,
+  Grid2 as Grid,
+  styled,
+  Typography,
+  useMediaQuery,
+  useTheme,
 } from '@mui/material';
 import WorkAnniversary from 'templates/WorkAnniversary';
 import HappyBirthday from 'templates/HappyBirthday';
@@ -22,163 +22,284 @@ import notContent from 'assets/imgs/placeholders/notContent.png';
 import api from 'api/api';
 
 const StylizedLabelContainer = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    gap: theme.shape.padding,
+  display: 'flex',
+  alignItems: 'center',
+  gap: theme.shape.padding,
 }));
 
 const StylizedContentContainer = styled('div')(({ theme }) => ({
-    marginLeft: theme.shape.margin * 2,
-    width: '100%',
+  marginLeft: theme.shape.margin * 2,
+  width: '100%',
 }));
 
-const tabLabels = ['Comunicados', 'Eventos', 'Espacio C4', 'Novedades', 'Cumpleaños'];
+const tabLabels = [
+  'Comunicados',
+  'Eventos',
+  'Espacio C4',
+  'Novedades',
+  'Cumpleaños',
+];
 
 const Communication = () => {
-    const params = new URLSearchParams(window.location.search);
-    const tab = params.get('tab');
-    const postId = params.get('id');
-    const user = useSelector((state) => state.user.data);
-    const { role, has_signed_policies } = useAuth();
-    const isAdmin = [ROLES.SUPER_ADMIN, ROLES.ADMIN].includes(role);
-    const [loading, setLoading] = React.useState(true);
-    const [dashboard, setDashboard] = React.useState([]);
-    const theme = useTheme();
-    const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const params = new URLSearchParams(window.location.search);
+  const tab = params.get('tab');
+  const postId = params.get('id');
+  const user = useSelector((state) => state.user.data);
+  const { role, has_signed_policies } = useAuth();
+  const isAdmin = [ROLES.SUPER_ADMIN, ROLES.ADMIN].includes(role);
+  const [loading, setLoading] = React.useState(true);
+  const [dashboard, setDashboard] = React.useState([]);
+  const theme = useTheme();
+  const isMediumScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-    const groupedData = React.useCallback((data) => {
-        return data.reduce((accumulated, item) => {
-            if (!accumulated[item.title]) {
-                accumulated[item.title] = [];
-            }
+  const groupedData = React.useCallback((data) => {
+    return data.reduce((accumulated, item) => {
+      if (!accumulated[item.title]) {
+        accumulated[item.title] = [];
+      }
 
-            accumulated[item.title].push(item);
-            return accumulated;
-        }, {})
-    }, []);
+      accumulated[item.title].push(item);
+      return accumulated;
+    }, {});
+  }, []);
 
-    const renderTabContent = (tab, data, defaultValue) => {
-        if (data) {
-            switch (tab) {
-                case 'news':
-                    const newsData = groupedData(data);
-                    return (
-                        !isMediumScreen ?
-                            <VerticalTabs
-                                tabLabels={Object.keys(newsData).map((title, index) => (
-                                    <StylizedLabelContainer key={index}>
-                                        <i className="ri-award-fill" style={{ fontWeight: 'normal', fontSize: '30px', color: theme.palette.primary.main, }}></i>
-                                        <Typography variant="body2" color="primary" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" textAlign="left">{title}</Typography>
-                                    </StylizedLabelContainer>
-                                ))}
-                                tabValues={Object.keys(newsData).map((title, index) => (
-                                    <WorkAnniversary key={index} usersData={newsData[title]} />
-                                ))}
-                                slotProps={{ indicator: { hidden: true, } }}
-                                defaultValue={defaultValue}
-                            />
-                            :
-                            Object.keys(newsData).map((title, index) => (
-                                <WorkAnniversary key={index} title={title} usersData={newsData[title]} isMediumScreen={isMediumScreen} mt={isMediumScreen ? 1 : 2} />
-                            ))
-                    );
-                case 'birthdays':
-                    return (
-                        !isMediumScreen ?
-                            <VerticalTabs
-                                tabLabels={data.map(row => (
-                                    <StylizedLabelContainer key={row.pk_birthday_id}>
-                                        <i className="ri-cake-2-line" style={{ fontWeight: 'normal', fontSize: '30px', color: theme.palette.primary.main, }}></i>
-                                        <Typography variant="body2" color="primary" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" textAlign="left">{row.title}</Typography>
-                                    </StylizedLabelContainer>
-                                ))}
-                                tabValues={data.map(row => (
-                                    <HappyBirthday keyIndex={row.pk_birthday_id} userData={row} />
-                                ))}
-                                slotProps={{ indicator: { hidden: true, } }}
-                                defaultValue={defaultValue}
-                            />
-                            :
-                            data.map((row, index) => (
-                                <HappyBirthday keyIndex={index} userData={row} isMediumScreen={isMediumScreen} mt={2} />
-                            ))
-                    );
-                case 'posts':
-                case 'events':
-                case 'c4':
-                default:
-                    return (
-                        !isMediumScreen ?
-                            <VerticalTabs
-                                tabLabels={data.map(row => (
-                                    <StylizedLabelContainer>
-                                        <img src={RHIcon} alt="RH" style={{ width: '30px' }} />
-                                        <Typography variant="body2" color="primary" whiteSpace="nowrap" textOverflow="ellipsis" overflow="hidden" textAlign="left">{row.title}</Typography>
-                                    </StylizedLabelContainer>
-                                ))}
-                                tabValues={data.map(row => (
-                                    <StylizedContentContainer>
-                                        {row.file && <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxHeight: '40vh', maxWidth: '100%', }} />}
-                                        <Typography component="div" variant="body1" color="primary" fontWeight="bold">{row.title}</Typography>
-                                        <hr />
-                                        <Typography component="div" variant="body2" color="primary" dangerouslySetInnerHTML={{ __html: row.content }} />
-                                    </StylizedContentContainer>
-                                ))}
-                                slotProps={{ indicator: { hidden: true, } }}
-                                defaultValue={defaultValue}
-                            />
-                            :
-                            data.map((row, index) => (
-                                <StylizedContentContainer key={row.title + '_' + index} className="mt-2">
-                                    <Typography component="div" variant="body1" color="primary" fontWeight="bold">{row.title}</Typography>
-                                    <hr />
-                                    {row.file && <img src={`data:image/${row.file_extension};base64,${row.file}`} alt={row.title} style={{ maxWidth: '100%', }} />}
-                                    <Typography component="div" variant="body2" color="primary" dangerouslySetInnerHTML={{ __html: row.content }} />
-                                </StylizedContentContainer>
-                            ))
-                    );
-            }
-        }
-    };
-
-    React.useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const { ok, data } = await api.get('communication/dashboard');
-                if (ok) {
-                    setDashboard(data);
-                }
-            }
-            catch (error) {
-                console.log('Error al cargar la información: ', error);
-            }
-            finally {
-                setLoading(false);
-            }
-        };
-        if (user?.pk_user_id) {
-            fetchData();
-        }
-    }, [user?.pk_user_id, has_signed_policies, isAdmin]);
-
-    if (loading) return (<Backdrop open={loading} invisible><CircularProgress /></Backdrop>);
-
-    return (
-        <GridLayout columnSpacing={0} maxHeight>
-            <Grid size={12}>
-                <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
-                    COMUNICACIÓN INTERNA
+  const renderTabContent = (tab, data, defaultValue) => {
+    if (data) {
+      switch (tab) {
+        case 'news':
+          const newsData = groupedData(data);
+          return !isMediumScreen ? (
+            <VerticalTabs
+              tabLabels={Object.keys(newsData).map((title, index) => (
+                <StylizedLabelContainer key={index}>
+                  <i
+                    className="ri-award-fill"
+                    style={{
+                      fontWeight: 'normal',
+                      fontSize: '30px',
+                      color: theme.palette.primary.main,
+                    }}
+                  ></i>
+                  <Typography
+                    variant="body2"
+                    color="primary"
+                    whiteSpace="nowrap"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    textAlign="left"
+                  >
+                    {title}
+                  </Typography>
+                </StylizedLabelContainer>
+              ))}
+              tabValues={Object.keys(newsData).map((title, index) => (
+                <WorkAnniversary key={index} usersData={newsData[title]} />
+              ))}
+              slotProps={{ indicator: { hidden: true } }}
+              defaultValue={defaultValue}
+            />
+          ) : (
+            Object.keys(newsData).map((title, index) => (
+              <WorkAnniversary
+                key={index}
+                title={title}
+                usersData={newsData[title]}
+                isMediumScreen={isMediumScreen}
+                mt={isMediumScreen ? 1 : 2}
+              />
+            ))
+          );
+        case 'birthdays':
+          return !isMediumScreen ? (
+            <VerticalTabs
+              tabLabels={data.map((row) => (
+                <StylizedLabelContainer key={row.pk_birthday_id}>
+                  <i
+                    className="ri-cake-2-line"
+                    style={{
+                      fontWeight: 'normal',
+                      fontSize: '30px',
+                      color: theme.palette.primary.main,
+                    }}
+                  ></i>
+                  <Typography
+                    variant="body2"
+                    color="primary"
+                    whiteSpace="nowrap"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    textAlign="left"
+                  >
+                    {row.title}
+                  </Typography>
+                </StylizedLabelContainer>
+              ))}
+              tabValues={data.map((row) => (
+                <HappyBirthday keyIndex={row.pk_birthday_id} userData={row} />
+              ))}
+              slotProps={{ indicator: { hidden: true } }}
+              defaultValue={defaultValue}
+            />
+          ) : (
+            data.map((row, index) => (
+              <HappyBirthday
+                keyIndex={index}
+                userData={row}
+                isMediumScreen={isMediumScreen}
+                mt={2}
+              />
+            ))
+          );
+        case 'posts':
+        case 'events':
+        case 'c4':
+        default:
+          return !isMediumScreen ? (
+            <VerticalTabs
+              tabLabels={data.map((row) => (
+                <StylizedLabelContainer>
+                  <img src={RHIcon} alt="RH" style={{ width: '30px' }} />
+                  <Typography
+                    variant="body2"
+                    color="primary"
+                    whiteSpace="nowrap"
+                    textOverflow="ellipsis"
+                    overflow="hidden"
+                    textAlign="left"
+                  >
+                    {row.title}
+                  </Typography>
+                </StylizedLabelContainer>
+              ))}
+              tabValues={data.map((row) => (
+                <StylizedContentContainer>
+                  {row.file && (
+                    <img
+                      src={`data:image/${row.file_extension};base64,${row.file}`}
+                      alt={row.title}
+                      style={{ maxHeight: '40vh', maxWidth: '100%' }}
+                    />
+                  )}
+                  <Typography
+                    component="div"
+                    variant="body1"
+                    color="primary"
+                    fontWeight="bold"
+                  >
+                    {row.title}
+                  </Typography>
+                  <hr />
+                  <Typography
+                    component="div"
+                    variant="body2"
+                    color="primary"
+                    dangerouslySetInnerHTML={{ __html: row.content }}
+                  />
+                </StylizedContentContainer>
+              ))}
+              slotProps={{ indicator: { hidden: true } }}
+              defaultValue={defaultValue}
+            />
+          ) : (
+            data.map((row, index) => (
+              <StylizedContentContainer
+                key={row.title + '_' + index}
+                className="mt-2"
+              >
+                <Typography
+                  component="div"
+                  variant="body1"
+                  color="primary"
+                  fontWeight="bold"
+                >
+                  {row.title}
                 </Typography>
-                <HorizontalTabs tabLabels={tabLabels} tabValues={[
-                    dashboard.posts && dashboard.posts.length > 0 ? renderTabContent('posts', dashboard.posts, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                    dashboard.events && dashboard.events.length > 0 ? renderTabContent('events', dashboard.events, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                    dashboard.c4 && dashboard.c4.length > 0 ? renderTabContent('c4', dashboard.c4, (postId - 1)) : <CardMedia component="img" src={notContent} />,
-                    dashboard.news && dashboard.news.length > 0 ? renderTabContent('news', dashboard.news) : <CardMedia component="img" src={notContent} />,
-                    dashboard.birthdays && dashboard.birthdays.length > 0 ? renderTabContent('birthdays', dashboard.birthdays) : <CardMedia component="img" src={notContent} />,
-                ]} defaultValue={tab ? tabLabels.indexOf(tab) : 0} />
-            </Grid>
-        </GridLayout>
+                <hr />
+                {row.file && (
+                  <img
+                    src={`data:image/${row.file_extension};base64,${row.file}`}
+                    alt={row.title}
+                    style={{ maxWidth: '100%' }}
+                  />
+                )}
+                <Typography
+                  component="div"
+                  variant="body2"
+                  color="primary"
+                  dangerouslySetInnerHTML={{ __html: row.content }}
+                />
+              </StylizedContentContainer>
+            ))
+          );
+      }
+    }
+  };
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { ok, data } = await api.get('communication/dashboard');
+        if (ok) {
+          setDashboard(data);
+        }
+      } catch (error) {
+        console.log('Error al cargar la información: ', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (user?.pk_user_id) {
+      fetchData();
+    }
+  }, [user?.pk_user_id, has_signed_policies, isAdmin]);
+
+  if (loading)
+    return (
+      <Backdrop open={loading} invisible>
+        <CircularProgress />
+      </Backdrop>
     );
+
+  return (
+    <GridLayout columnSpacing={0} maxHeight>
+      <Grid size={12}>
+        <Typography variant="h6" fontWeight="bold" color="primary" mb={2}>
+          COMUNICACIÓN INTERNA
+        </Typography>
+        <HorizontalTabs
+          tabLabels={tabLabels}
+          tabValues={[
+            dashboard.posts && dashboard.posts.length > 0 ? (
+              renderTabContent('posts', dashboard.posts, postId - 1)
+            ) : (
+              <CardMedia component="img" src={notContent} />
+            ),
+            dashboard.events && dashboard.events.length > 0 ? (
+              renderTabContent('events', dashboard.events, postId - 1)
+            ) : (
+              <CardMedia component="img" src={notContent} />
+            ),
+            dashboard.c4 && dashboard.c4.length > 0 ? (
+              renderTabContent('c4', dashboard.c4, postId - 1)
+            ) : (
+              <CardMedia component="img" src={notContent} />
+            ),
+            dashboard.news && dashboard.news.length > 0 ? (
+              renderTabContent('news', dashboard.news)
+            ) : (
+              <CardMedia component="img" src={notContent} />
+            ),
+            dashboard.birthdays && dashboard.birthdays.length > 0 ? (
+              renderTabContent('birthdays', dashboard.birthdays)
+            ) : (
+              <CardMedia component="img" src={notContent} />
+            ),
+          ]}
+          defaultValue={tab ? tabLabels.indexOf(tab) : 0}
+        />
+      </Grid>
+    </GridLayout>
+  );
 };
 
 export default Communication;

@@ -52,104 +52,257 @@ import Profile from 'pages/Profile/Profile';
 import Logout from 'components/Logout/Logout';
 import PrivateRoute from 'routes/PrivateRoute/PrivateRoute';
 import Organization from 'components/Charts/Organization';
-import { ROLES, } from 'assets/constants/constants';
+import { ROLES } from 'assets/constants/constants';
 
 // Configuración de rutas públicas, privadas y catálogos
 const publicRoutes = [
-    { path: '/', element: <Navigate to="/login" /> },
-    { path: '/login', element: <Login /> },
-    { path: '/recuperar-contraseña', element: <PasswordRecovery /> },
-    { path: '/restablecer-contraseña', element: <PasswordUpdate /> },
+  { path: '/', element: <Navigate to="/login" /> },
+  { path: '/login', element: <Login /> },
+  { path: '/recuperar-contraseña', element: <PasswordRecovery /> },
+  { path: '/restablecer-contraseña', element: <PasswordUpdate /> },
 ];
 
 const privateRoutes = [
-    /* Menú */
-    { path: '/home', element: <Home />, roles: ROLES.ALL },
-    { path: '/perfil', element: <Profile />, roles: ROLES.ALL },
-    { path: '/organigrama', element: <Organization />, roles: ROLES.ALL },
-    { path: '/directorio', element: <Directory />, roles: ROLES.ALL },
-    { path: '/vacaciones', element: <Vacations />, roles: ROLES.ALL },
-    { path: '/aprendizaje', element: <ELearning />, roles: ROLES.ALL },
-    { path: '/comunicacion-interna', element: <Communication />, roles: ROLES.ALL },
-    { path: '/creacion-contenido', element: <CommunityManagerPosts />, roles: [ROLES.SUPER_ADMIN, ROLES.COMMUNITY_MANAGER] },
-    { path: '/evaluacion-desempeño', element: <Evaluations />, roles: ROLES.ALL },
-    { path: '/buzon-anonimo', element: <AnonymousMailbox />, roles: ROLES.ALL },
-    { path: '/beneficios', element: <Benefits />, roles: ROLES.ALL },
-    { path: '/encuesta-laboral', element: <Survey />, roles: ROLES.ALL },
-    { path: '/documentacion', element: <Documentation />, roles: ROLES.ALL },
-    { path: '/catalogos', element: <CatalogList />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN] },
-    { path: '/logout', element: <Logout /> },
+  /* Menú */
+  { path: '/home', element: <Home />, roles: ROLES.ALL },
+  { path: '/perfil', element: <Profile />, roles: ROLES.ALL },
+  { path: '/organigrama', element: <Organization />, roles: ROLES.ALL },
+  { path: '/directorio', element: <Directory />, roles: ROLES.ALL },
+  { path: '/vacaciones', element: <Vacations />, roles: ROLES.ALL },
+  { path: '/aprendizaje', element: <ELearning />, roles: ROLES.ALL },
+  {
+    path: '/comunicacion-interna',
+    element: <Communication />,
+    roles: ROLES.ALL,
+  },
+  {
+    path: '/creacion-contenido',
+    element: <CommunityManagerPosts />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
+  { path: '/evaluacion-desempeño', element: <Evaluations />, roles: ROLES.ALL },
+  { path: '/buzon-anonimo', element: <AnonymousMailbox />, roles: ROLES.ALL },
+  { path: '/beneficios', element: <Benefits />, roles: ROLES.ALL },
+  { path: '/encuesta-laboral', element: <Survey />, roles: ROLES.ALL },
+  { path: '/documentacion', element: <Documentation />, roles: ROLES.ALL },
+  {
+    path: '/catalogos',
+    element: <CatalogList />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN],
+  },
+  { path: '/logout', element: <Logout /> },
 
-    /* Administración de usuarios */
-    { path: '/usuarios', element: <UserList />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
-    { path: '/usuarios/crear', element: <UserForm />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
-    { path: '/usuarios/editar/:id', element: <UserForm />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
+  /* Administración de usuarios */
+  {
+    path: '/usuarios',
+    element: <UserList />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
+  {
+    path: '/usuarios/crear',
+    element: <UserForm />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
+  {
+    path: '/usuarios/editar/:id',
+    element: <UserForm />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
 
-    /* Vacantes */
-    { path: '/vacantes', element: <JobPositionsList />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
-    { path: '/vacantes/crear', element: <JobPositionForm />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
-    { path: '/vacantes/editar/:id', element: <JobPositionForm />, roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER] },
+  /* Vacantes */
+  {
+    path: '/vacantes',
+    element: <JobPositionsList />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
+  {
+    path: '/vacantes/crear',
+    element: <JobPositionForm />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
+  {
+    path: '/vacantes/editar/:id',
+    element: <JobPositionForm />,
+    roles: [ROLES.SUPER_ADMIN, ROLES.ADMIN, ROLES.COMMUNITY_MANAGER],
+  },
 
-    /* Políticas */
-    { path: '/politicas-empresa', element: <PoliciesList />, },
-    { path: '/politicas-empresa/crear', element: <PoliciesForm /> },
-    { path: '/politicas-empresa/editar/:id', element: <PoliciesForm /> },
-    { path: '/politicas-empresa/:id/ver-usuarios', element: <UsersPerPolicy /> },
+  /* Políticas */
+  { path: '/politicas-empresa', element: <PoliciesList /> },
+  { path: '/politicas-empresa/crear', element: <PoliciesForm /> },
+  { path: '/politicas-empresa/editar/:id', element: <PoliciesForm /> },
+  { path: '/politicas-empresa/:id/ver-usuarios', element: <UsersPerPolicy /> },
 
-    /* Creación de contenido */
-    { path: '/creacion-contenido/crear', element: <CommunityManagerPostForm /> },
-    { path: '/creacion-contenido/editar/:id', element: <CommunityManagerPostForm /> },
+  /* Creación de contenido */
+  { path: '/creacion-contenido/crear', element: <CommunityManagerPostForm /> },
+  {
+    path: '/creacion-contenido/editar/:id',
+    element: <CommunityManagerPostForm />,
+  },
 
-    /* Catálogos */
-    { path: '/catalogos/vacantes/area', element: <JobPositionAreaCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/area/crear', element: <JobPositionAreaForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/area/editar/:id', element: <JobPositionAreaForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/departamento', element: <JobPositionDepartmentCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/departamento/crear', element: <JobPositionDepartmentForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/departamento/editar/:id', element: <JobPositionDepartmentForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/oficina', element: <JobPositionOfficeCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/oficina/crear', element: <JobPositionOfficeForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/oficina/editar/:id', element: <JobPositionOfficeForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/tipo-vacante', element: <JobPositionTypeCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/tipo-vacante/crear', element: <JobPositionTypeForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/vacantes/tipo-vacante/editar/:id', element: <JobPositionTypeForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/estatus/vacantes', element: <JobPositionStatusCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/estatus/usuarios', element: <UserStatusCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/genero', element: <UserGendersCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/genero/crear', element: <UserGendersForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/genero/editar/:id', element: <UserGendersForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/estado-civil', element: <UserMaritalStatusCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/estado-civil/crear', element: <UserMaritalStatusForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/estado-civil/editar/:id', element: <UserMaritalStatusForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/nacionalidad', element: <UserNationalitiesCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/nacionalidad/crear', element: <UserNationalitiesForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/nacionalidad/editar/:id', element: <UserNationalitiesForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/parentesco', element: <UserRelationshipsCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/parentesco/crear', element: <UserRelationshipsForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/parentesco/editar/:id', element: <UserRelationshipsForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/roles', element: <UserRolesCatalog />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/roles/crear', element: <UserRolesForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
-    { path: '/catalogos/usuarios/roles/editar/:id', element: <UserRolesForm />, roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN] },
+  /* Catálogos */
+  {
+    path: '/catalogos/vacantes/area',
+    element: <JobPositionAreaCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/area/crear',
+    element: <JobPositionAreaForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/area/editar/:id',
+    element: <JobPositionAreaForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/departamento',
+    element: <JobPositionDepartmentCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/departamento/crear',
+    element: <JobPositionDepartmentForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/departamento/editar/:id',
+    element: <JobPositionDepartmentForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/oficina',
+    element: <JobPositionOfficeCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/oficina/crear',
+    element: <JobPositionOfficeForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/oficina/editar/:id',
+    element: <JobPositionOfficeForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/tipo-vacante',
+    element: <JobPositionTypeCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/tipo-vacante/crear',
+    element: <JobPositionTypeForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/vacantes/tipo-vacante/editar/:id',
+    element: <JobPositionTypeForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/estatus/vacantes',
+    element: <JobPositionStatusCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/estatus/usuarios',
+    element: <UserStatusCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/genero',
+    element: <UserGendersCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/genero/crear',
+    element: <UserGendersForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/genero/editar/:id',
+    element: <UserGendersForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/estado-civil',
+    element: <UserMaritalStatusCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/estado-civil/crear',
+    element: <UserMaritalStatusForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/estado-civil/editar/:id',
+    element: <UserMaritalStatusForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/nacionalidad',
+    element: <UserNationalitiesCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/nacionalidad/crear',
+    element: <UserNationalitiesForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/nacionalidad/editar/:id',
+    element: <UserNationalitiesForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/parentesco',
+    element: <UserRelationshipsCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/parentesco/crear',
+    element: <UserRelationshipsForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/parentesco/editar/:id',
+    element: <UserRelationshipsForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/roles',
+    element: <UserRolesCatalog />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/roles/crear',
+    element: <UserRolesForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
+  {
+    path: '/catalogos/usuarios/roles/editar/:id',
+    element: <UserRolesForm />,
+    roles: [ROLES.ADMIN, ROLES.SUPER_ADMIN],
+  },
 ];
 
 const notFoundRoute = [{ path: '*', element: <NoPage /> }];
 
-const routes = [
-    ...publicRoutes,
-    ...privateRoutes,
-    ...notFoundRoute,
-];
+const routes = [...publicRoutes, ...privateRoutes, ...notFoundRoute];
 
 const BrowserRouters = () => (
-    <Routes>
-        {routes.map(({ path, element, roles }, index) => (
-            <Route
-                key={index}
-                path={path}
-                element={roles ? <PrivateRoute roles={roles}>{element}</PrivateRoute> : element}
-            />
-        ))}
-    </Routes>
+  <Routes>
+    {routes.map(({ path, element, roles }, index) => (
+      <Route
+        key={index}
+        path={path}
+        element={
+          roles ? <PrivateRoute roles={roles}>{element}</PrivateRoute> : element
+        }
+      />
+    ))}
+  </Routes>
 );
 
 export default BrowserRouters;

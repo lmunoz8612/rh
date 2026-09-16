@@ -6,24 +6,25 @@ import * as userAction from '../../store/actions/userActions';
 import api from '../../api/api';
 
 const Logout = () => {
-    const { auth, logout } = useAuth();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+  const { auth, logout } = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-    React.useEffect(() => {
-        if (auth) {
-            api.post('logout', {})
-                .then(data => {
-                    logout();
-                    dispatch(userAction.logout());
-                    navigate('/login');
-                    window.location.reload();
-                })
-                .catch(error => `Ha ocurrido un error: ${error}`);
-        }
-    }, [auth, logout, dispatch, navigate]);
+  React.useEffect(() => {
+    if (auth) {
+      api
+        .post('logout', {})
+        .then((data) => {
+          logout();
+          dispatch(userAction.logout());
+          navigate('/login');
+          window.location.reload();
+        })
+        .catch((error) => `Ha ocurrido un error: ${error}`);
+    }
+  }, [auth, logout, dispatch, navigate]);
 
-    return (<></>)
+  return <></>;
 };
 
 export default Logout;

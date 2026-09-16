@@ -3,13 +3,15 @@ import GridLayout from 'components/GridLayout/GridLayout';
 import { Grid2 as Grid, Typography } from '@mui/material';
 
 const Evaluations = () => {
-    return (
-        <GridLayout>
-            <Grid size={12}>
-                <Typography variant="h6" fontWeight="bold" color="primary">EVALUACIÓN DE DESEMPEÑO</Typography>
-            </Grid>
-        </GridLayout>
-    )
+  return (
+    <GridLayout>
+      <Grid size={12}>
+        <Typography variant="h6" fontWeight="bold" color="primary">
+          EVALUACIÓN DE DESEMPEÑO
+        </Typography>
+      </Grid>
+    </GridLayout>
+  );
 };
 
 export default Evaluations;

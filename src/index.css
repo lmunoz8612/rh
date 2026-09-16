@@ -1,53 +1,53 @@
 :root {
-    --base-size: 8px;
-    /* Base de 8px */
+  --base-size: 8px;
+  /* Base de 8px */
 }
 
 body {
-    margin: 0;
-    font-family: 'Roboto', sans-serif;
-    height: 100%;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  height: 100%;
 }
 
 code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+  font-family:
+    source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 button {
-    text-transform: none !important;
+  text-transform: none !important;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 i {
-    font-size: 1.15rem;
+  font-size: 1.15rem;
 }
 
 i.white {
-    color: #FFFFFF;
+  color: #ffffff;
 }
 
 ::-webkit-scrollbar {
-    width: 12px;
-    /* Ancho de la barra de desplazamiento */
+  width: 12px;
+  /* Ancho de la barra de desplazamiento */
 }
 
 ::-webkit-scrollbar-track {
-    background-color: #f0f0f0;
-    /* Color de fondo de la pista */
+  background-color: #f0f0f0;
+  /* Color de fondo de la pista */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #888;
-    /* Color de la barra de desplazamiento */
-    border: 1px solid #f0f0f0;
-    /* Espacio alrededor de la barra */
+  background-color: #888;
+  /* Color de la barra de desplazamiento */
+  border: 1px solid #f0f0f0;
+  /* Espacio alrededor de la barra */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #555;
-    /* Color cuando el cursor pasa sobre la barra */
+  background-color: #555;
+  /* Color cuando el cursor pasa sobre la barra */
 }
